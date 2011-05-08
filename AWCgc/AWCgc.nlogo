@@ -55,7 +55,11 @@ end
 
 
 to setup  ; Setup the model for a run, build a graph.
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   file-close
   clear-output
   set-default-shape weights "none"
@@ -685,6 +689,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 BUTTON
 7
@@ -701,6 +706,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 68
@@ -717,6 +723,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 6
@@ -818,8 +825,9 @@ count
 1.0
 true
 false
+"" ""
 PENS
-"default" 1.0 1 -16777216 true
+"default" 1.0 1 -16777216 true "" ""
 
 MONITOR
 767
@@ -847,6 +855,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 704
@@ -863,6 +872,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 704
@@ -879,6 +889,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 TEXTBOX
 684
@@ -904,8 +915,9 @@ NIL
 1.0
 true
 false
+"" ""
 PENS
-"default" 1.0 0 -16777216 true
+"default" 1.0 0 -16777216 true "" ""
 
 SLIDER
 6
@@ -967,14 +979,23 @@ sum ([nr_constraintc] of nodes)
 13
 
 @#$#@#$#@
-Title: Graph Coloring using Asynchronous Weak-Commitment
-Author: Ionel Muscalagiu, Jose M. Vidal 
-Description:
-This is the implementation of the Asynchronous Weak-Commitment Search for the graph coloring problem. We solve the graph coloring problem using the AWCS algorithm from 
-<ul>
-<li>Makoto Yokoo and Katsutoshi Hirayama. <a href="http://jmvidal.cse.sc.edu/lib/yokoo00a.html">Algorithms for Distributed Constraint Satisfaction: A Review</a>. <i>Autonomous Agents and Multi-Agent Systems,</i> 3(2):185--207, 2000.
-</li>
-</ul>
+# Graph Coloring using Asynchronous Weak-Commitment  
+  
+## WHAT IS IT?
+![screenshot](AWCgc.png) 
+
+This is the implementation of the Asynchronous Weak-Commitment Search for the graph coloring problem. We solve the graph coloring problem using the AWCS algorithm from   
+
+ 1. Makoto Yokoo and Katsutoshi Hirayama. [Algorithms for Distributed Constraint Satisfaction: A Review](http://jmvidal.cse.sc.edu/lib/yokoo00a.html). _Autonomous Agents and Multi-Agent Systems,_ 3(2):185--207, 2000.  
+
+## CREDITS
+
+by Ionel Muscalagiu, Jose M. Vidal 
+
+## CHANGES
+
+20100623
+
 @#$#@#$#@
 default
 true
@@ -996,7 +1017,7 @@ true
 0
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
