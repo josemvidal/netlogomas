@@ -59,7 +59,11 @@ to setup-queens
 end
 
 to setup
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   setup-patches
   setup-queens
   ask queens [initialize]
@@ -302,7 +306,6 @@ to check-agent-view
        ]
    ]
 end
-
 @#$#@#$#@
 GRAPHICS-WINDOW
 246
@@ -329,6 +332,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 BUTTON
 2
@@ -345,6 +349,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 2
@@ -376,6 +381,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 164
@@ -392,6 +398,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SWITCH
 2
@@ -418,8 +425,9 @@ NIL
 10.0
 true
 false
+"" ""
 PENS
-"default" 1.0 0 -16777216 true
+"default" 1.0 0 -16777216 true "" ""
 
 MONITOR
 175
@@ -433,14 +441,17 @@ sum ([messages-received] of queens)
 11
 
 @#$#@#$#@
-Title: NQueens Asynchronous Weak-Commitment
-Author: Rosa L. Zavala Gutierrez
-Description:
+# NQueens Asynchronous Weak-Commitment
+
+## CREDITS 
+
+Rosa L. Zavala Gutierrez
+
+## WHAT IS IT?
+
 This is the implementation of the Asynchronous Weak-Commitment Search for the n-queens problem.
 
-It also shows the number of messages sent by each agent. 
-It behaves different that the Adopt algorithm in which a few agents end up sending the great majority of the messages. 
-Here, the messages sent are better distributed among the agents.
+It also shows the number of messages sent by each agent. It behaves different that the Adopt algorithm in which a few agents end up sending the great majority of the messages. Here, the messages sent are better distributed among the agents.
 @#$#@#$#@
 default
 true
@@ -671,7 +682,7 @@ Polygon -6459832 true true 46 128 33 120 21 118 11 123 3 138 5 160 13 178 9 192 
 Polygon -6459832 true true 67 122 96 126 63 144
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

@@ -22,12 +22,16 @@ patches-own [name]
 
 globals [max-distance delivery-distances spoke-mult distance-mult num-asks-multiplier average-total-cost average-total-dist num-deliverators]
 
-;num-deliveries- deliveries are referred to as "tasks" in the paper.
+;num-deliveries- deliveries are referred to as "jobs" in the paper.
 ;num-spokes- is the variable "R" in the paper
 
 
 to setup
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   initialize
 end
 
@@ -107,10 +111,10 @@ to-report make-deliveries
 end
 
 
-;agents in the depot exchange tasks
+;agents in the depot exchange jobs
 ;I had to do this using a double loop because the parallelism introduced synchronization problems.
 ;without-interruption is not good enough to solve this.
-to exchange-tasks
+to exchange-jobs
   let i 0
   let j 0
   let owners 0
@@ -136,7 +140,7 @@ to exchange-tasks
       while [not empty? traders][
         set j (turtle first traders)
         ask i [
-          try-to-give-next-task-to-agent j]
+          try-to-give-next-job-to-agent j]
         ifelse (empty? [packages] of i)[ ;if I gave it then Im done
           set traders [] ]
           [
@@ -160,7 +164,7 @@ to update
     [stop]
 
   ;agents in the depot
-  exchange-tasks
+  exchange-jobs
   
   ;Ask all deliverators to move one step, in parallel
   ask deliverators [
@@ -240,15 +244,15 @@ to-report get-costs-from [delivrs]
   report res
 end
 
-;Report the extra cost that agnt will incurr if it accepts task, given its current task (first deliverables)
+;Report the extra cost that agnt will incurr if it accepts job, given its current job (first deliverables)
 ;This method is explained in the 1996 paper.
-to-report extra-cost [agnt task]
-  if (first first [deliveries] of agnt != first task)[
+to-report extra-cost [agnt job]
+  if (first first [deliveries] of agnt != first job)[
     report 0] ;only report cost if they are both on the same fin
-  ifelse (item 1 task <= item 1 first [deliveries] of agnt)[ 
-    report item 1 task] ;if task is closer than mine then cost is just cost to get there
+  ifelse (item 1 job <= item 1 first [deliveries] of agnt)[ 
+    report item 1 job] ;if job is closer than mine then cost is just cost to get there
     [
-    report 2 * item 1 task - item 1 first [deliveries] of agnt] ;if task is farther than mine
+    report 2 * item 1 job - item 1 first [deliveries] of agnt] ;if job is farther than mine
 end
 
 
@@ -268,16 +272,16 @@ to set-deliveries
     set balance lput 0 balance]
 end
 
-;returns true if I am willing to take the next task from ag
+;returns true if I am willing to take the next job from ag
 ;It implements eq.1 from the paper
-to-report willing-to-take-next-task-from [ag]
+to-report willing-to-take-next-job-from [ag]
   let the-extra-cost 0
-  let his-task 0
+  let his-job 0
   let prob 0
    ; C_{ij}^{kl} from the paper
   report true ;philantropic behavior
-  set his-task first [deliveries] of ag
-  set the-extra-cost max list 0.0 (item 1 his-task - item 1 first deliveries)
+  set his-job first [deliveries] of ag
+  set the-extra-cost max list 0.0 (item 1 his-job - item 1 first deliveries)
   set prob 1.0 / (1.0 + exp ((the-extra-cost - beta * average-cost - item ([who] of ag) balance)/ tau))
 ;  type "Prob of "
 ;  type who
@@ -290,12 +294,12 @@ to-report willing-to-take-next-task-from [ag]
   report false
 end
 
-to-report reciprocating-agent-accepts-my-next-task? [ag]
+to-report reciprocating-agent-accepts-my-next-job? [ag]
   let his-extra-cost 0
-  let his-task 0
+  let his-job 0
   let prob 0
    ; C_{ij}^{kl} from the paper
-  set his-task first [deliveries] of ag
+  set his-job first [deliveries] of ag
   set his-extra-cost extra-cost ag first deliveries
   set prob 1.0 / (1.0 + exp ((his-extra-cost - beta * [average-cost] of ag - item who ([balance] of ag))/ tau))
   if (random-float 1.0 <= prob)[
@@ -303,23 +307,23 @@ to-report reciprocating-agent-accepts-my-next-task? [ag]
   report false
 end    
 
-to give-my-next-task-to-agent [to-agent]
+to give-my-next-job-to-agent [to-agent]
   let his-extra-cost 0
-  let task 0
+  let job 0
   
 ;  type who
 ;  type " giving package to "
 ;  print who-of to-agent
-  set task first deliveries ;the task I am giving to-agent
-  set his-extra-cost extra-cost to-agent task
+  set job first deliveries ;the job I am giving to-agent
+  set his-extra-cost extra-cost to-agent job
   ask to-agent [
-    set packages lput (item 1 task) packages
+    set packages lput (item 1 job) packages
     set accepted-package true
     set helping lput ([who] of myself) helping
     set balance replace-item ([who] of myself) balance
                                       ((item ([who] of myself) balance) - his-extra-cost)
   ]
-;  set ([packages] of to-agent) lput (item 1 task) ([packages] of to-agent)
+;  set ([packages] of to-agent) lput (item 1 job) ([packages] of to-agent)
 ;  type "packages ="
 ;  print (packages-of to-agent)
 ;  set ([accepted-package] of to-agent) true
@@ -327,13 +331,13 @@ to give-my-next-task-to-agent [to-agent]
 ;  set ([balance] of to-agent) replace-item who ([balance] of to-agent) 
 ;                                      ((item who [balance] of to-agent) - his-extra-cost)
   set balance replace-item ([who] of to-agent) balance
-                                      ((item ([who] of to-agent) balance) + (2 * item 1 task)) ;update my balance of him..nice guy.
+                                      ((item ([who] of to-agent) balance) + (2 * item 1 job)) ;update my balance of him..nice guy.
   set deliveries butfirst deliveries
   set packages []
 end
 
-;Assumes that the next task for me and ag is on the same spoke.
-to try-to-give-next-task-to-agent [ag]
+;Assumes that the next job for me and ag is on the same spoke.
+to try-to-give-next-job-to-agent [ag]
  let my-cost 0
   let his-cost 0
   
@@ -343,10 +347,10 @@ to try-to-give-next-task-to-agent [ag]
  set my-cost 2 * item 1 first deliveries
  if (my-cost > extra-cost ag first deliveries)[ ;as per the 1996 paper
    ifelse ([behavior] of ag = 0)[ ;philanthropic
-     give-my-next-task-to-agent ag]
+     give-my-next-job-to-agent ag]
    [ ;reciprocating
-     if (reciprocating-agent-accepts-my-next-task? ag)[
-       give-my-next-task-to-agent ag]]]
+     if (reciprocating-agent-accepts-my-next-job? ag)[
+       give-my-next-job-to-agent ag]]]
 end
 
 to deliver
@@ -391,7 +395,6 @@ to evolve-behavior
   [
     set behavior [behavior] of (turtle first b) ]    
 end
-
 @#$#@#$#@
 GRAPHICS-WINDOW
 256
@@ -418,6 +421,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 BUTTON
 2
@@ -434,6 +438,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 84
@@ -450,6 +455,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 166
@@ -466,6 +472,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 2
@@ -552,8 +559,9 @@ dist
 100.0
 true
 false
+"" ""
 PENS
-"default" 1.0 0 -16777216 true
+"default" 1.0 0 -16777216 true "" ""
 
 BUTTON
 2
@@ -570,6 +578,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 126
@@ -586,6 +595,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 2
@@ -662,6 +672,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 174
@@ -678,40 +689,32 @@ NIL
 NIL
 NIL
 NIL
+1
 
 @#$#@#$#@
-Title: Reciprocity in Package Delivery
-Author: Jose M Vidal
-Description:
-In the package delivery problem a the agents must deliver a set 
-of packages from a central depot. The destinations lie along one of several spokes
-emaniting from the central depot. The agents can exchange packages only at the depot.
-The cost to an agent is proportional to the number of packages carried.<br/>
-The optimal solution to this problem is to choose one agent to go on each
-spoke and deliver all the packages scheduled for it. However, this would 
-require completely selfless agents. In this program we study the dynamics that
-emerege when using different
-populations of selfish, philantropic, reciprocal, and individual agents behave.
+# Reciprocity in Package Delivery  
+## CREDITS
+
+Jose M Vidal  
+
+## WHAT IS IT?
+
+In the package delivery problem a the agents must deliver a set of packages from a central depot. The destinations lie along one of several spokes emaniting from the central depot. The agents can exchange packages only at the depot. The cost to an agent is proportional to the number of packages carried.
+
+The optimal solution to this problem is to choose one agent to go on each spoke and deliver all the packages scheduled for it. However, this would require completely selfless agents. In this program we study the dynamics that emerege when using different populations of selfish, philantropic, reciprocal, and individual agents behave.  
+
 These results were first presented in
-<ul>
-<li>
-Sandip Sen. 
-<a href="http://jmvidal.cse.sc.edu/lib/sen96a.html">
-Reciprocity: a foundational principle for promoting cooperative behavior among self-interested agents.</a>
-In Proceedings of the Second International Conference on Multiagent Systems,  p. 322--329, AAAI Press, Menlo Park, CA. 1996.
-</li>
-<li>
-Sandip Sen and Partha Sarathi Dutta. 
-<a href="http://jmvidal.cse.sc.edu/lib/sen02a.html">
-The evolution and stability of cooperative traits</a>. I
-n Proceedings of the First Intenational Joint Conference on Autonomous Agents and Multiagent Systems, pages 1114-1120. ACM Press, NY, NY, 2002.
-</li>
-<li>
-Sandip Sen. 
-<a  href="http://jmvidal.cse.sc.edu/lib/sen02b.html">
-Believing others: Pros and cons</a>. Artificial Intelligence, 142(2):179-203, December 2002.
-</li>
-</ul>
+
+ 1. Sandip Sen. [Reciprocity: a foundational principle for promoting cooperative behavior among self-interested agents](http://jmvidal.cse.sc.edu/lib/sen96a.html)
+In _Proceedings of the Second International Conference on Multiagent Systems_,  p.322--329, AAAI Press, Menlo Park, CA. 1996.
+  
+ 2. Sandip Sen and Partha Sarathi Dutta. [The evolution and stability of cooperative traits](http://jmvidal.cse.sc.edu/lib/sen02a.html). In _Proceedings of the First Intenational Joint Conference on Autonomous Agents and Multiagent Systems_, pages 1114-1120. ACM Press, NY, NY, 2002.
+
+ 3. Sandip Sen. [Believing others: Pros and cons](http://jmvidal.cse.sc.edu/lib/sen02b.html). Artificial Intelligence, 142(2):179-203, December 2002.  
+
+## CHANGES
+
+20100623
 @#$#@#$#@
 default
 true
@@ -917,7 +920,7 @@ Polygon -6459832 true true 46 128 33 120 21 118 11 123 3 138 5 160 13 178 9 192 
 Polygon -6459832 true true 67 122 96 126 63 144
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

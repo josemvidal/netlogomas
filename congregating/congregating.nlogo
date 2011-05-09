@@ -23,7 +23,11 @@ patches-own [market] ;the number of the market agent at this spot.
 globals [profit comp-cost]
 
 to setup
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   setup-buyers
   setup-sellers
   setup-markets
@@ -229,6 +233,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 SLIDER
 1
@@ -260,6 +265,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 1
@@ -336,6 +342,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 MONITOR
 174
@@ -363,6 +370,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 PLOT
 564
@@ -378,9 +386,10 @@ NIL
 10.0
 true
 true
+"" ""
 PENS
-"profit" 1.0 0 -2674135 true
-"comp" 1.0 0 -10899396 true
+"profit" 1.0 0 -2674135 true "" ""
+"comp" 1.0 0 -10899396 true "" ""
 
 PLOT
 565
@@ -396,8 +405,9 @@ profit
 100.0
 true
 false
+"" ""
 PENS
-"default" 1.0 0 -16777216 true
+"default" 1.0 0 -16777216 true "" ""
 
 MONITOR
 174
@@ -411,16 +421,21 @@ comp-cost
 11
 
 @#$#@#$#@
-Title: Congregating in Market Systems
-Author: Jose M Vidal
-Description: We implement the congregating algorithm from
-<ul>
-<li>Chistopher H. Brooks and Edmund H. Durfee. 
-<a href="hhttp://jmvidal.cse.sc.edu/library/index.html#brooks02a">
-Congregating and market formation.</a>
-In Proceedings of the 1st International Joint Conference on Autonomous Agents and MultiAgent Systems, pages 96-103, 2002.
-</li>
-</ul>
+# Congregating in Market Systems  
+
+## WHAT IS IT?
+
+We implement the congregating algorithm from
+
+ * Chistopher H. Brooks and Edmund H. Durfee. [Congregating and market formation](http://jmvidal.cse.sc.edu/library/brooks02a.html). In Proceedings of the 1st International Joint Conference on Autonomous Agents and MultiAgent Systems, pages 96-103, 2002.  
+
+## CREDITS
+
+Jose M Vidal
+
+## CHANGES
+
+20100623
 @#$#@#$#@
 default
 true
@@ -615,7 +630,7 @@ Polygon -6459832 true true 46 128 33 120 21 118 11 123 3 138 5 160 13 178 9 192 
 Polygon -6459832 true true 67 122 96 126 63 144
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

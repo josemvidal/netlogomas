@@ -38,7 +38,11 @@ to setup-globals  ; separate procedure for setting globals
 end
 
 to setup  ; Setup the model for a run, build a graph.
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   clear-output
   set-default-shape weights "none"
   setup-globals
@@ -511,6 +515,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 BUTTON
 7
@@ -527,6 +532,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 68
@@ -543,6 +549,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 6
@@ -644,8 +651,9 @@ count
 1.0
 true
 false
+"" ""
 PENS
-"default" 1.0 1 -16777216 true
+"default" 1.0 1 -16777216 true "" ""
 
 MONITOR
 620
@@ -684,6 +692,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 557
@@ -700,6 +709,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 557
@@ -716,6 +726,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 TEXTBOX
 569
@@ -741,8 +752,9 @@ NIL
 1.0
 true
 false
+"" ""
 PENS
-"default" 1.0 0 -16777216 true
+"default" 1.0 0 -16777216 true "" ""
 
 PLOT
 563
@@ -758,19 +770,29 @@ NIL
 1.0
 true
 false
+"" ""
 PENS
-"default" 1.0 0 -16777216 true
+"default" 1.0 0 -16777216 true "" ""
 
 @#$#@#$#@
-Title: Graph Coloring using Distributed Breakout
-Author: Jose M Vidal
-Description:
-An implementation of the distributed breakout algorithm from
-<ul>
-<li>Makoto Yokoo and Katsutoshi Hirayama. <a href="http://jmvidal.cse.sc.edu/lib/yokoo00a.html">Algorithms for Distributed Constraint Satisfaction: A Review</a>. <i>Autonomous Agents and Multi-Agent Systems,</i> 3(2):185--207, 2000. 
+# Graph Coloring using Distributed Breakout
 
-<li>Makoto Yokoo and Katsutoshi Hirayama. <a href="http://jmvidal.cse.sc.edu/lib/yokoo96a.html">Distributed Breakout Algorithm for Solving Distributed Constraint Satisfaction Problems</a>. In <i>Proceedings of the Second International Conference on Multiagent Systems,</i> p. 401--408, 1996.</li>
-</ul>
+## WHAT IS IT?
+  
+An implementation of the distributed breakout algorithm from  
+  
+ 1. Makoto Yokoo and Katsutoshi Hirayama. [Algorithms for Distributed Constraint Satisfaction: A Review<](http://jmvidal.cse.sc.edu/lib/yokoo00a.html). _Autonomous Agents and Multi-Agent Systems_, 3(2):185--207, 2000. 
+
+ 2. Makoto Yokoo and Katsutoshi Hirayama. [Distributed Breakout Algorithm for Solving Distributed Constraint Satisfaction Problems](<http://jmvidal.cse.sc.edu/lib/yokoo96a.html). In _Proceedings of the Second International Conference on Multiagent Systems,_ p. 401--408, 1996.
+
+
+## CREDITS
+
+Jose M Vidal
+
+## CHANGES
+
+20100623
 @#$#@#$#@
 default
 true
@@ -792,7 +814,7 @@ true
 0
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

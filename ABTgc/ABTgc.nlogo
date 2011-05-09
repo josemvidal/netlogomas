@@ -12,7 +12,11 @@ turtles-own [
 
 
 to setup
-  clear-all
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   ;; YOU find a better command to do this
   set all-colors filter [? < possible-colors] [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15]
   set-default-shape turtles "circle"
@@ -305,6 +309,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 BUTTON
 1
@@ -321,6 +326,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 1
@@ -352,6 +358,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 1
@@ -398,6 +405,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 1
@@ -414,6 +422,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 MONITOR
 160
@@ -492,42 +501,47 @@ Size of local view is size of neighbors compared to the whole graph.\n\nLocal vi
 1
 
 @#$#@#$#@
-NODE VALUES
------------
-I used simple integers to represent node values, corresponding to the indexes in the built-in base-colors array. So in a 3-color graph, the values will be the numbers [0,1,2], and they will refer to the corresponding colors in the base-colors array.
+# Asynchronous Backtracking  
 
-PRIORITIES
-----------
-Priorities are implemented by who number, with lower numbers having lower priorities.
+## CREDITS
 
-SOLVABLE GRAPHS
----------------
-The program as written always generates solvable graphs. It does this by
-1) Generating the specified number of turtles
-2) Assigning random colors to each turtle (from the specified number of colors)
-3) Generating legal links until either the links-to-nodes ratio has been reached, or no legal links can be generated. In the latter case, a warning is written to the console.
+Gary Fredericks 
 
-GENERATING NO-GOODS
--------------------
-I implemented two no-good generators. The first, which is used by default, is the naive generator which uses the local view. I also tried to create a hyperresolution generator, but my simple implementation would just concatenate all of the previously generated nogoods (filtering out the elements referring to self), which certainly isn't sufficient to solve the problem, and may also be worse than the local-view version (it also generates tautological nogoods most of the time, i.e. NOT(TURTLE1(A) ^ TURTLE1(B) ^ ...)). If I had time, I think I would enjoy trying to do hyperresolution properly.
-
-IMPLEMENTATION NOTES
---------------------
-1) I used the table extension for the local-view datastructure, with the who-numbers for keys.
-2) A single nogood is represented as a list of pairs, where [[1 3] [2 4]] means that "turtle 1 having value 3 and turtle 2 having value 4" is no-good. 
-3) Despite using who-numbers for local-view and no-goods, I implemented "naybors" as a list of turtles. Could've gone either way I guess.
-
-
-CREDITS
--------
-
-Title: Asynchronous Backtracking
-Author: Gary Fredericks
-Description: 
+## WHAT IS IT?
 
 Generates and solves graph coloring problems using ABT.
 
----------
+## NODE VALUES
+
+I used simple integers to represent node values, corresponding to the indexes in the built-in base-colors array. So in a 3-color graph, the values will be the numbers [0,1,2], and they will refer to the corresponding colors in the base-colors array.
+
+## PRIORITIES
+
+Priorities are implemented by who number, with lower numbers having lower priorities.
+
+## SOLVABLE GRAPHS
+
+The program as written always generates solvable graphs. It does this by  
+1) Generating the specified number of turtles  
+2) Assigning random colors to each turtle (from the specified number of colors)  
+3) Generating legal links until either the links-to-nodes ratio has been reached, or no legal links can be generated. In the latter case, a warning is written to the console.
+
+## GENERATING NO-GOODS
+
+I implemented two no-good generators. The first, which is used by default, is the naive generator which uses the local view. I also tried to create a hyperresolution generator, but my simple implementation would just concatenate all of the previously generated nogoods (filtering out the elements referring to self), which certainly isn't sufficient to solve the problem, and may also be worse than the local-view version (it also generates tautological nogoods most of the time, i.e. NOT(TURTLE1(A) ^ TURTLE1(B) ^ ...)). If I had time, I think I would enjoy trying to do hyperresolution properly.
+
+## IMPLEMENTATION NOTES
+
+1) I used the table extension for the local-view datastructure, with the who-numbers for keys.  
+2) A single nogood is represented as a list of pairs, where [[1 3] [2 4]] means that "turtle 1 having value 3 and turtle 2 having value 4" is no-good.   
+3) Despite using who-numbers for local-view and no-goods, I implemented "naybors" as a list of turtles. Could've gone either way I guess.
+
+## CHANGES
+
+20100623
+
+
+
 @#$#@#$#@
 default
 true
@@ -821,7 +835,7 @@ Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

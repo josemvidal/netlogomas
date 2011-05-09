@@ -33,7 +33,11 @@ end
 
 ;Create the items and bids
 to setup  ; Setup the model for a run, build a graph.
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   clear-output
   setup-globals
   ask patches [set pcolor white]
@@ -328,7 +332,11 @@ end
 
 ;read from a cats-generated file
 to setup-from-file [filename]
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   clear-output
   setup-globals
   ask patches [set pcolor white]
@@ -401,6 +409,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 BUTTON
 6
@@ -417,6 +426,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 4
@@ -507,9 +517,10 @@ NIL
 1.0
 true
 false
+"" ""
 PENS
-"optimal" 1.0 0 -2674135 false
-"default" 1.0 0 -16777216 true
+"optimal" 1.0 0 -2674135 false "" ""
+"default" 1.0 0 -16777216 true "" ""
 
 SLIDER
 5
@@ -556,6 +567,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 MONITOR
 803
@@ -583,6 +595,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 800
@@ -599,6 +612,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 MONITOR
 917
@@ -626,6 +640,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 803
@@ -642,6 +657,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 802
@@ -658,6 +674,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 801
@@ -674,23 +691,30 @@ NIL
 NIL
 NIL
 NIL
+1
 
 @#$#@#$#@
-Title: Combinatorial Auction
-Author: Jose M Vidal
-Description:
+# Combinatorial Auction  
+
+## WHAT IS IT?
 
 Generates and solves a combinatorial auction. The yellow circles represent the items for sale and the green squares represent the bids. Each bid is connected to the items it is over. The square bids with the squares around them are the ones in the revenue-maximizing solution, which we find upon "setup" by running a branch-and-bids algorithm. We implement a branch and bound algorithm on both the branch on items search tree and the branch on bids search tree.
 
-The simple branch and bound algorithms implemented here are described in 
-<ul><li>
- Jose M. Vidal. <a href="http://www.multiagent.com/fmas/">Fundamentals of Multiagent Systems: Using NetLogo Models</a>. Unpublished. 2006.
-</li></ul>
+The simple branch and bound algorithms implemented here are described in
+
+ * Jose M. Vidal. [Fundamentals of Multiagent Systems: Using NetLogo Models](http://www.multiagent.com/fmas/). Unpublished. 2006.
 
 If you want to learn more about combinatorial auctions I recommend
-<ul><li>
-Peter Cramton and Yoav Shoham and Richard Steinberg. <a href="http://jmvidal.cse.sc.edu/lib/cramton06a.html">Combinatorial Auctions</a>. MIT Press. 2006.
-</li></ul>
+
+ * Peter Cramton and Yoav Shoham and Richard Steinberg. [Combinatorial Auctions](http://jmvidal.cse.sc.edu/lib/cramton06a.html). MIT Press. 2006.
+
+## CREDITS
+
+Jose M Vidal
+
+## CHANGES
+
+20100623
 @#$#@#$#@
 default
 true
@@ -737,7 +761,7 @@ Rectangle -7500403 false true 30 30 270 285
 Rectangle -7500403 false true 15 15 285 300
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

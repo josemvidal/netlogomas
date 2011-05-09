@@ -8,7 +8,11 @@ turtles-own [past-rewards-blue past-rewards-red update-clock friends]
 globals [time num-turtles old-k]
 
 to setup
-    ca
+    ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
     set time 0
     set-default-shape turtles "box"
     set num-turtles world-width * world-height
@@ -143,6 +147,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 BUTTON
 2
@@ -159,6 +164,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 84
@@ -175,6 +181,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 4
@@ -205,9 +212,10 @@ NIL
 100.0
 true
 false
+"" ""
 PENS
-"red" 1.0 0 -2674135 true
-"blue" 1.0 0 -13345367 true
+"red" 1.0 0 -2674135 true "" ""
+"blue" 1.0 0 -13345367 true "" ""
 
 MONITOR
 634
@@ -250,6 +258,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 3
@@ -292,24 +301,25 @@ NIL
 HORIZONTAL
 
 @#$#@#$#@
-Title: The Coordination Game
-Author: Jose M Vidal
-Description:
-This is the binary coordination game. Each agent can be either red
-or blue. At each time step some of the agents change their color simultaneously.
-The goal is to find out how long it takes, under different conditions, for the
-population to converge to one color. This problem was presented in
-<ul>
-<li>Yoav Shoham and Moshe Tennenholtz. 
-<a href="http://jmvidal.cse.sc.edu/lib/shoham97a.html">
-On the emergence of social conventions: modeling, analysis, and simulations</a>. Artificial Intelligence, 94 (139--166) 1997.
-</li>
-<li>
-Jordi Delgado. 
-<a href="http://jmvidal.cse.sc.edu/lib/delgado02a.html">
-Emergence of social conventions in complex networks</a>. Artificial Intelligence, 141. p. 171--185, 2002.
-</li>
-</ul>
+# The Coordination Game  
+
+## WHAT IS IT?
+This is the binary coordination game. Each agent can be either red  
+or blue. At each time step some of the agents change their color simultaneously.  
+The goal is to find out how long it takes, under different conditions, for the  
+population to converge to one color. This problem was presented in  
+
+ 1. Yoav Shoham and Moshe Tennenholtz. [On the emergence of social conventions: modeling, analysis, and simulations](http://jmvidal.cse.sc.edu/lib/shoham97a.html). Artificial Intelligence, 94 (139--166) 1997.  
+
+ 2. Jordi Delgado. [Emergence of social conventions in complex networks](http://jmvidal.cse.sc.edu/lib/delgado02a.html). Artificial Intelligence, 141. p. 171--185, 2002.
+
+## CREDITS
+
+Jose M Vidal
+
+## CHANGES
+
+20100623
 @#$#@#$#@
 default
 true
@@ -504,7 +514,7 @@ Polygon -6459832 true true 46 128 33 120 21 118 11 123 3 138 5 160 13 178 9 192 
 Polygon -6459832 true true 67 122 96 126 63 144
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

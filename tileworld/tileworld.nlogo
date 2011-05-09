@@ -24,7 +24,11 @@ globals [holes-born holes-filled score]
 
 
 to setup
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   set-default-shape tiles "box"
   set-default-shape holes "circle"
   create-robots num-robots [
@@ -188,6 +192,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 BUTTON
 3
@@ -204,6 +209,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 85
@@ -220,6 +226,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 166
@@ -236,6 +243,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 4
@@ -337,27 +345,29 @@ NIL
 100.0
 true
 false
+"" ""
 PENS
-"default" 1.0 0 -16777216 true
+"default" 1.0 0 -16777216 true "" ""
 
 @#$#@#$#@
-Title: Tileworld
-Author: Jose M Vidal
-Description:
-This is the classic tileworld problem. There are empty holes and tiles.
-The agents must push the tiles so that they cover the empty holes. Agents
-can push each other or more than one tile at once. The solution implemented
-here is the obvious one. AFAIK, there is no consensus on what is the
-best algorithm for solving this problem. The Tileworld was first introduced in
-<ul>
-<li>
-Martha Pollack and Marc Ringuette. 
-<a href="http://citeseer.nj.nec.com/pollack90introducing.html">
-Introducing the Tileworld: experimentally evaluating agent architectures</a>.
-Thomas Dietterich and William Swartout ed.In Proceedings of the Eighth National Conference on Artificial Intelligence,  p. 183--189, AAAI Press. 1990.
-</li>
-</ul>
+# Tileworld  
+## CREDITS
 
+Jose M Vidal  
+
+## WHAT IS IT? 
+This is the classic tileworld problem. There are empty holes and tiles.  
+The agents must push the tiles so that they cover the empty holes. Agents  
+can push each other or more than one tile at once. The solution implemented  
+here is the obvious one. AFAIK, there is no consensus on what is the  
+best algorithm for solving this problem. The Tileworld was first introduced in
+ 
+ * Martha Pollack and Marc Ringuette. [Introducing the Tileworld: experimentally evaluating agent architectures](http://citeseer.nj.nec.com/pollack90introducing.html) 
+Thomas Dietterich and William Swartout ed.In _Proceedings of the Eighth National Conference on Artificial Intelligence,_  p. 183--189, AAAI Press. 1990.
+
+## CHANGES
+
+20100623
 @#$#@#$#@
 default
 false
@@ -552,7 +562,7 @@ Polygon -6459832 true true 46 128 33 120 21 118 11 123 3 138 5 160 13 178 9 192 
 Polygon -6459832 true true 67 122 96 126 63 144
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

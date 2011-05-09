@@ -43,7 +43,11 @@ end
 to setup
     let tmpag 0
   
-    ca
+    ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
     set time 0
     ask patches [set pcolor white]
     set-default-shape documents "box"
@@ -343,6 +347,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 BUTTON
 4
@@ -359,6 +364,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 86
@@ -375,6 +381,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 168
@@ -391,6 +398,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 4
@@ -537,8 +545,9 @@ NIL
 100.0
 true
 false
+"" ""
 PENS
-"default" 1.0 0 -16777216 true
+"default" 1.0 0 -16777216 true "" ""
 
 SLIDER
 4
@@ -569,17 +578,27 @@ NIL
 1.0
 true
 false
+"" ""
 PENS
-"default" 1.0 0 -16777216 true
+"default" 1.0 0 -16777216 true "" ""
 
 @#$#@#$#@
-Title: Distributed Recommender System
-Author: Jose M. Vidal
-Description:
+# Distributed Recommender System  
+
+## WHAT IS IT?
+
 A prototype implementation of a distributed recommender system as seen in
-<ul>
-<li>Jose M. Vidal. <a href="http://jmvidal.cse.sc.edu/papers/vidal03b.pdf">An Incentive-Compatible Distributed Recommendation Model</a>. In <i>Proceedings of the Sixth International Workshop on Trust, Privacy, Deception, and Fraud in Agent Societies</i>, p. 84--91, 2003. </li>
-</ul>
+
+ * Jose M. Vidal. [An Incentive-Compatible Distributed Recommendation Model](http://jmvidal.cse.sc.edu/papers/vidal03b.pdf"). In _Proceedings of the Sixth International Workshop on Trust, Privacy, Deception, and Fraud in Agent Societies_, p. 84--91, 2003.
+
+
+## CREDITS
+
+Jose M Vidal
+
+## CHANGES 
+
+20100623
 @#$#@#$#@
 default
 true
@@ -810,7 +829,7 @@ Polygon -6459832 true true 46 128 33 120 21 118 11 123 3 138 5 160 13 178 9 192 
 Polygon -6459832 true true 67 122 96 126 63 144
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

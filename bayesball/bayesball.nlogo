@@ -40,7 +40,11 @@ to-report closest-xy [x y agent-set]  ; Return closest agent to x, y
 end
 
 to setup
- clear-all
+ ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
  set star-color red
  set j-color 97
  set visited-star-color black
@@ -283,7 +287,6 @@ end
 
 
 
-
 @#$#@#$#@
 GRAPHICS-WINDOW
 513
@@ -310,6 +313,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 BUTTON
 21
@@ -326,6 +330,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 56
@@ -367,6 +372,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 190
@@ -413,6 +419,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 48
@@ -429,6 +436,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 258
@@ -445,6 +453,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 246
@@ -461,6 +470,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 279
@@ -477,6 +487,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 95
@@ -484,7 +495,7 @@ BUTTON
 252
 383
 clear
-ca\nask patches [ set pcolor white ]
+;; (for this model to work with NetLogo's new plotting features,\n  ;; __clear-all-and-reset-ticks should be replaced with clear-all at\n  ;; the beginning of your setup procedure and reset-ticks at the end\n  ;; of the procedure.)\n  __clear-all-and-reset-ticks\nask patches [ set pcolor white ]
 NIL
 1
 T
@@ -493,6 +504,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 TEXTBOX
 279
@@ -519,6 +531,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 TEXTBOX
 141
@@ -561,13 +574,16 @@ Resets execution, preserving currently viewed network
 0
 
 @#$#@#$#@
-WHAT IS IT?
------------
+# Bayes-Ball Algorithm
+
+## WHAT IS IT?
 
 This model implements the Bayes-Ball algorithm. The purpose to this simulation is to provide a visualization that readers of Shachter's article can explore in order to better understand the process of the algorithm as well as the results it elicits.
 
-HOW IT WORKS
-------------
+ 1. Ross D. Shachter. [Bayes-Ball: The Rational Pastime (for Determining Irrelevance and Requisite Information in Belief Networks and Influence Diagrams)](http://jmvidal.cse.sc.edu/lib/shachter98a.html). In _Proceedings of the Fourteenth Conference in Uncertainty in Artificial Intelligence,_ p. 480--487, 1998.
+
+
+## HOW IT WORKS
 
 This model is an implementation of the algorithm described by Ross D. Shachter in his 1998 article "Bayes-Ball: The Rational Pastime (for Deteriming Irrelevance and Requisite Information in Belief Networks and Influence Diagrams)."
 
@@ -577,11 +593,10 @@ Query nodes comprise the set of nodes J. These nodes are tinted light blue. Node
 
 The algorithm will start the "bouncind ball" at the query node(s) comprising the set of nodes J (tinted blue in the simulation), and then pass the ball around in the following manner:
 
-* An unobserved (no evidence) probabilistic node will pass the ball through to its parents if the ball was sent from a child, and through to its children if the ball was sent from a parent. When the ball is passed to an unobserved node from a child, the ball will also be bounce back to its children.
+* An unobserved (no evidence) probabilistic node will pass the ball through to its parents if the ball was sent from a child, and through to its children if the ball was sent from a parent. When the ball is passed to an unobserved node from a child, the ball will also be bounce back to its children.  
 * An observed node bounces back balls passed to it from a parent, but blocks any ball passed to it from a child.
 
-BUTTON DESCRIPTION
-------------------
+## BUTTON DESCRIPTION
 
 SETUP NETWORK - this sets up a network characterized by the following parameters configurable by the user via sliders: number-nodes and number-J-nodes
 
@@ -605,18 +620,14 @@ NUMBER-J-NODES - the number of nodes in the network that are being queried upon
 
 NUMBER-K-NODES - the number of nodes that have evidence on them. This is used by the "get evidence" button.
 
+## CREDITS
 
-CREDITS
--------
+Alicia Ruvinsky
 
-Title: Bayes-Ball Algorithm
-Author: Alicia Ruvinsky
-Description:
-An implementation of the Bayes-Ball algorithm for determining irrelevant and requisite information in Bayesian Networks.
-<ul><li>Ross D. Shachter. <a href="http://jmvidal.cse.sc.edu/lib/shachter98a.html">Bayes-Ball: The Rational Pastime (for Determining Irrelevance and Requisite Information in Belief Networks and Influence Diagrams)</a>. In <i>Proceedings of the Fourteenth Conference in Uncertainty in Artificial Intelligence,</i> p. 480--487, 1998.</li></ul>
+## CHANGES
 
+20100623
 
------
 @#$#@#$#@
 default
 true
@@ -912,7 +923,7 @@ Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

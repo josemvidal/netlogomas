@@ -989,13 +989,11 @@ This is the implementation of the Asynchronous Weak-Commitment Search for the gr
  1. Makoto Yokoo and Katsutoshi Hirayama. [Algorithms for Distributed Constraint Satisfaction: A Review](http://jmvidal.cse.sc.edu/lib/yokoo00a.html). _Autonomous Agents and Multi-Agent Systems,_ 3(2):185--207, 2000.  
 
 ## CREDITS
-
-by Ionel Muscalagiu, Jose M. Vidal 
+Ionel Muscalagiu, Jose M. Vidal 
 
 ## CHANGES
 
 20100623
-
 @#$#@#$#@
 default
 true

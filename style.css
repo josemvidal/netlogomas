@@ -1,0 +1,49 @@
+body {
+    font-family: Arial,Helvetica,Sans-serif;
+    font-size: 13px;
+}
+
+#grid {
+    overflow: hidden;
+    width: 962px;
+    padding-bottom: 10px;
+    position:relative;
+    margin: 0px auto;
+}
+
+div.model {
+    height: 70px;
+    width: 282px;
+    float: left;
+    line-height: 22px;
+    margin: 15px 0 18px 0;
+    padding-left: 35px;
+}
+
+
+div.model div.thumbHolder {
+    line-height:70px;
+    float:left;
+    width:90px;
+    height: 90px;
+    overflow: hidden;
+    margin-bottom: 5px;
+    text-align:center;
+    margin-right: 12px;
+    border:1px solid #1c1c1c;
+}
+
+div.model h4 {
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0;
+}
+
+div.model h5 {
+    font-weight: normal;
+    line-height:20px;
+    margin: 0;
+}
+div.model h5 p, div.model h4 p{
+    margin: 0;
+}

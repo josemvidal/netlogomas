@@ -17,7 +17,11 @@ to-report get-Qtable-structure
 end
 
 to setup
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   setup-plotting
   ask patches [
     set pcolor white]
@@ -277,6 +281,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 BUTTON
 11
@@ -293,6 +298,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 147
@@ -309,6 +315,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 PLOT
 9
@@ -324,8 +331,9 @@ number of moves
 10.0
 true
 false
+"" ""
 PENS
-"action-count" 1.0 0 -16777216 true
+"action-count" 1.0 0 -16777216 true "" ""
 
 SLIDER
 17
@@ -402,12 +410,22 @@ NIL
 NIL
 NIL
 NIL
+1
 
 @#$#@#$#@
-title: Q-Learning
-author: Seang Chan Ryu
-description: An implementation of the Q-learning algorithm for a simple path-finding domain.
-<ul><li>Christopher J. C. H. Watkins and Peter Dayan. <a href="http://jmvidal.cse.sc.edu/lib/watkins92a.html ">Q-Learning</a>. <i>Machine Learning,</i> 8(3-4):279--292, 1992.</li></ul>
+# Q-Learning  
+## CREDITS
+
+Seang Chan Ryu
+
+## WHAT IS IT?
+An implementation of the Q-learning algorithm for a simple path-finding domain.  
+
+ * Christopher J. C. H. Watkins and Peter Dayan. [Q-Learning](http://jmvidal.cse.sc.edu/lib/watkins92a.html). _Machine Learning,_ 8(3-4):279--292, 1992.
+
+## CHANGES
+
+20100623
 @#$#@#$#@
 default
 true
@@ -718,7 +736,7 @@ Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

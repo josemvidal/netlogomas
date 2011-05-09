@@ -5,7 +5,11 @@ men-own [preferences]
 women-own [preferences]
 
 to setup
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   ask patches [set pcolor white]
   create-women 64 [
     set heading 0
@@ -123,6 +127,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 BUTTON
 3
@@ -139,6 +144,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 75
@@ -155,6 +161,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 141
@@ -171,6 +178,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 PLOT
 5
@@ -186,8 +194,9 @@ Women
 64.0
 false
 false
+"" ""
 PENS
-"default" 1.0 2 -16777216 false
+"default" 1.0 2 -16777216 false "" ""
 
 PLOT
 6
@@ -203,35 +212,38 @@ NIL
 10.0
 true
 false
+"" ""
 PENS
-"default" 1.0 0 -13345367 true
+"default" 1.0 0 -13345367 true "" ""
 
 @#$#@#$#@
-Title: Marriage Problem
-Author: Jose M Vidal
-Description:
+# Marriage Problem  
+
+## WHAT IS IT?
 
 There are 64 single men and 64 single women, all heterosexual its is presumed, who want to get married. Each one ranks all possible mates. The problem is how to find the set of marriages so that no two people (one man one woman) that are not married to each other do, in fact, prefer each other over their assigned partners. 
 
-The solution we implement is the deferred acceptance algorithm from
-<ul>
-<li>D. Gale and L. S. Shapley. <a href="http://jmvidal.cse.sc.edu/lib/gale62a.html">College Admissions and the Stability of Marriage</a>. <i>The American Mathematical Monthly,</i> 69(1):9--15, Mathematical Association of America. 1962.
-</li>
-</ul>
--------
+The solution we implement is the deferred acceptance algorithm from  
+
+ * D. Gale and L. S. Shapley. [College Admissions and the Stability of Marriage](http://jmvidal.cse.sc.edu/lib/gale62a.html). _The American Mathematical Monthly,_ 69(1):9--15, Mathematical Association of America. 1962.  
 
 In this model the woman are the pink circles and the men are blue (well, cyan). When a man connects to a woman (edge) it means he proposes to her. The numbers in the nodes represent the preference of that node for its partner. The algorithm works as follows
 
-<pre>
-while there are women without a proposal
---every man proposes to the his most preferred woman who has not rejected him
---every woman with multiple proposals rejects all but the one she prefers the most
-</pre>
+ 1. while there are women without a proposal  
+ 2. every man proposes to the his most preferred woman who has not rejected him  
+ 3. every woman with multiple proposals rejects all but the one she prefers the most  
 
 When done, all women have one proposal which they accept and live happily ever after. The resulting marriages are stable.
 
 The scatter plot shows the marriages that we find, where the x coordinate is the man's preference for the woman and the y coordinate is the woman's preference for the man (1 means her most preferred). Notice that even though women turn down men, the men do much better.
- 
+
+## CREDITS
+
+Jose M Vidal
+
+## CHANGES
+
+20100623
 @#$#@#$#@
 default
 true
@@ -534,7 +546,7 @@ Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

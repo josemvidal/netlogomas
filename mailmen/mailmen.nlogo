@@ -9,7 +9,11 @@ letters-own [destination-x destination-y carrier]
 mailmen-own [my-letters distance-travelled]
 
 to setup
-    ca
+    ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
     setup-mailmen
     setup-letters
 end
@@ -167,6 +171,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 BUTTON
 8
@@ -183,6 +188,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 89
@@ -199,6 +205,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 8
@@ -245,6 +252,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 MONITOR
 9
@@ -272,6 +280,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 PLOT
 9
@@ -287,28 +296,33 @@ NIL
 10.0
 true
 false
+"" ""
 PENS
-"default" 1.0 0 -16777216 true
+"default" 1.0 0 -16777216 true "" ""
 
 @#$#@#$#@
-Title: Mailmen
-Author: Jose M Vidal
-Description:
-This is the classis MAS mailmen problem where a set of mailmen
-have to deliver a set of letters. Each letter must be delivered to
-a different place and mailmen can exchange letters. The goal is to
-minimize the total distance travelled by the mailmen. It is
-an instance of a distributed resource allocation problem. The solution
-provided here is only the most obvious. Better solutions are
-possible. AFAIK, there is no agreement on what is the best
-algorithm for solving this problem. This problem was first popularized in
-<ul>
-<li>
-Jeffrey S. Rosenschein and Gilad Zlotkin. 
-<a href="http://www.amazon.com/exec/obidos/ASIN/0262181592/multiagentcom/">
-Rules of Encounter</a>. The MIT Press, Cambridge, MA, 1994.
-</li>
-</ul>
+# Mailmen  
+
+## WHAT IS IT?
+ 
+This is the classis MAS mailmen problem where a set of mailmen  
+have to deliver a set of letters. Each letter must be delivered to  
+a different place and mailmen can exchange letters. The goal is to  
+minimize the total distance travelled by the mailmen. It is  
+an instance of a distributed resource allocation problem. The solution  
+provided here is only the most obvious. Better solutions are  
+possible. AFAIK, there is no agreement on what is the best  
+algorithm for solving this problem. This problem was first popularized in  
+  
+ * Jeffrey S. Rosenschein and Gilad Zlotkin. [Rules of Encounter](http://www.amazon.com/exec/obidos/ASIN/0262181592/multiagentcom/). The MIT Press, Cambridge, MA, 1994.
+
+## CREDITS
+
+Jose M Vidal
+
+## CHANGES 
+
+20100623
 @#$#@#$#@
 default
 true
@@ -503,7 +517,7 @@ Polygon -6459832 true true 46 128 33 120 21 118 11 123 3 138 5 160 13 178 9 192 
 Polygon -6459832 true true 67 122 96 126 63 144
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

@@ -703,16 +703,22 @@ semi-committed?
 # Container Port Simulation  
 
 ## WHAT IS IT?
+![screenshot](port.png)
 
 A simulation of a container port. We model the movement of the cranes using various utility functions to determine what is the best behavior for the crane operators. The trucks have random arrival times. More details can be found at   
 
- 1. Nathan Huynh and José M. Vidal. [An Agent-Based Approach to Modeling Yard Cranes at Seaport Container Terminals](http://jmvidal.cse.sc.edu/papers/huynh10a.pdf). In _Proceedings of the Symposium on Theory of Modeling and Simulation_, 2010. 
+ 1. Nathan Huynh and Jose M. Vidal. [An Agent-Based Approach to Modeling Yard Cranes at Seaport Container Terminals](http://jmvidal.cse.sc.edu/papers/huynh10a.pdf). In _Proceedings of the Symposium on Theory of Modeling and Simulation_, 2010. 
 
- 2. José M Vidal and Nathan Huynh. [Building Agent-Based Models of Seaport Container Terminals](http://jmvidal.cse.sc.edu/papers/vidal10a.pdf). In _Proceedings of 6th Workshop on Agents in Traffic and Transportation_, 2010. 
+ 2. Jose M Vidal and Nathan Huynh. [Building Agent-Based Models of Seaport Container Terminals](http://jmvidal.cse.sc.edu/papers/vidal10a.pdf). In _Proceedings of 6th Workshop on Agents in Traffic and Transportation_, 2010. 
 
 ## CREDITS
+Jose M Vidal and Nathan Huynh
 
-by Jose M Vidal and Nathan Huynh
+## CHANGES
+
+20110303
+
+Last change.
 @#$#@#$#@
 default
 true

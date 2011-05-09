@@ -193,7 +193,11 @@ to random-attachment
 end
 
 to setup
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   ask patches [set pcolor white]
   set components []
   setup-initial-nodes
@@ -460,6 +464,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 BUTTON
 7
@@ -476,6 +481,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 CHOOSER
 7
@@ -541,7 +547,7 @@ num-nodes
 num-nodes
 10
 100
-24
+23
 1
 1
 NIL
@@ -588,6 +594,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 PLOT
 11
@@ -603,8 +610,9 @@ NIL
 10.0
 true
 false
+"" ""
 PENS
-"default" 1.0 1 -16777216 true
+"default" 1.0 1 -16777216 true "" ""
 
 MONITOR
 678
@@ -653,8 +661,9 @@ CPL
 1.0
 true
 false
+"" ""
 PENS
-"default" 1.0 0 -16777216 true
+"default" 1.0 0 -16777216 true "" ""
 
 BUTTON
 677
@@ -671,6 +680,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 PLOT
 8
@@ -686,8 +696,9 @@ Size
 10.0
 true
 false
+"" ""
 PENS
-"default" 1.0 0 -16777216 true
+"default" 1.0 0 -16777216 true "" ""
 
 PLOT
 582
@@ -703,8 +714,9 @@ Distance
 10.0
 true
 false
+"" ""
 PENS
-"default" 1.0 0 -16777216 true
+"default" 1.0 0 -16777216 true "" ""
 
 MONITOR
 681
@@ -732,17 +744,23 @@ NIL
 NIL
 NIL
 NIL
+1
 
 @#$#@#$#@
-Title: Supply Network Survivability
-Author: Jose M Vidal
-Description:
+# Supply Network Survivability  
+## CREDITS
 
-This model shows how various supply-chain network topologies fare under attack. The original model was developed to study the military's supply chain vulnerability to terrorist or military attacks, part of the Ultralog project.<ul>
+Jose M Vidal  
 
-<li>Hari Prasad Thadakamalla, Usha Nandini Raghavan, Soundar Kumara, and R&eacute;ka Albert,. <a href="http://jmvidal.cse.sc.edu/lib/thadakamalla04a.html">Survivability of Multiagent-Based Supply Networks: A Topological Perspective</a>. <i>IEEE Intelligent Systems,</i> 19(5):24--31, 2004
-</li>
-</ul>
+## WHAT IS IT?
+
+This model shows how various supply-chain network topologies fare under attack. The original model was developed to study the military's supply chain vulnerability to terrorist or military attacks, part of the Ultralog project.
+
+ * Hari Prasad Thadakamalla, Usha Nandini Raghavan, Soundar Kumara, and Reka Albert. [Survivability of Multiagent-Based Supply Networks: A Topological Perspectiv](http://jmvidal.cse.sc.edu/lib/thadakamalla04a.html). _IEEE Intelligent Systems,_ 19(5):24--31, 2004.
+
+## CHANGES
+
+20100623
 @#$#@#$#@
 default
 true
@@ -1038,7 +1056,7 @@ Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

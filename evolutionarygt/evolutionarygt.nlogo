@@ -16,7 +16,11 @@ end
 
 ;the 3x3 payoffs matrix case
 to setup3
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   set c3 (sqrt 3) / 3
   print-payoffs
   ask patches [
@@ -202,7 +206,11 @@ end
 ;In the 2x2 matrix case
 
 to setup2
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   print-payoffs2
   ask patches [
     set pcolor white
@@ -357,7 +365,6 @@ to output-to-file [file]
   ]
   file-close
 end
-
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
@@ -384,6 +391,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 BUTTON
 5
@@ -400,6 +408,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 79
@@ -416,6 +425,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 144
@@ -432,6 +442,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 MONITOR
 17
@@ -494,9 +505,18 @@ payoffs
 2
 
 @#$#@#$#@
-Title: Evolutionary Game Theory
-Author: Jose M Vidal
-Description: A visualization of a population of agents playing repeated games under the standard evolutionary game theory assumptions. We use a simplex to show how these populations evolve over time. Click the forever-go button and then click on the simplex to show how a population at that spot would evolve.
+# Evolutionary Game Theory  
+
+## WHAT IS IT?
+A visualization of a population of agents playing repeated games under the standard evolutionary game theory assumptions. We use a simplex to show how these populations evolve over time. Click the forever-go button and then click on the simplex to show how a population at that spot would evolve.
+
+## CREDITS
+
+Jose M Vidal
+
+## CHANGES
+
+20100623
 @#$#@#$#@
 default
 true
@@ -799,7 +819,7 @@ Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

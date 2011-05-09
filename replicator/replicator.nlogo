@@ -19,7 +19,11 @@ turtles-own [
 
 to setup 
   ;;; setup routine
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   clear-output
   setup-globals
   setup-patches
@@ -312,6 +316,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 BUTTON
 20
@@ -328,6 +333,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 20
@@ -344,6 +350,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 TEXTBOX
 503
@@ -440,6 +447,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 603
@@ -456,6 +464,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 662
@@ -472,6 +481,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 544
@@ -488,6 +498,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 604
@@ -504,6 +515,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 663
@@ -520,6 +532,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 544
@@ -536,6 +549,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 604
@@ -552,6 +566,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 663
@@ -568,6 +583,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 521
@@ -584,6 +600,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 19
@@ -600,6 +617,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 20
@@ -616,11 +634,21 @@ NIL
 NIL
 NIL
 NIL
+1
 
 @#$#@#$#@
-Title: Replicator Dynamics
-Author: Scott Langevin
-Description: A visualization of the dynamics of a populations of agents using replicator dynamics. The players are of one of three types, each type playing a pure strategy in a 3x3 game. The user can change the payoffs of the game (but this still needs some work, we also need to add arrow that show direction. You interested?). The results are displayes in a simplex plot where each corner corresponds to one of the strategies. Dark areas correspond to fast movement of the population while lite areas represent slow movement.
+# Replicator Dynamics  
+## CREDITS
+
+Scott Langevin  
+
+## WHAT IS IT?
+
+A visualization of the dynamics of a populations of agents using replicator dynamics. The players are of one of three types, each type playing a pure strategy in a 3x3 game. The user can change the payoffs of the game (but this still needs some work, we also need to add arrow that show direction. You interested?). The results are displayes in a simplex plot where each corner corresponds to one of the strategies. Dark areas correspond to fast movement of the population while lite areas represent slow movement.
+
+## CHANGES
+
+20100623
 @#$#@#$#@
 default
 true
@@ -916,7 +944,7 @@ Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

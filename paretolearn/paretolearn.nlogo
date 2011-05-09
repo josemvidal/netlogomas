@@ -17,7 +17,11 @@ to-report utility [my-action his-action]
 end
  
 to setup
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   clear-all-plots
   ask patches [set pcolor white]
  ; set payoffs [[3 0][5 1]] ;action 0 is cooperate, 1 is defect
@@ -154,6 +158,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 BUTTON
 18
@@ -170,6 +175,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 21
@@ -186,6 +192,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 93
@@ -202,6 +209,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 PLOT
 210
@@ -217,9 +225,10 @@ Expected Utility
 4.0
 true
 true
+"" ""
 PENS
-"cooperation" 1.0 0 -10899396 true
-"defection" 1.0 0 -2674135 true
+"cooperation" 1.0 0 -10899396 true "" ""
+"defection" 1.0 0 -2674135 true "" ""
 
 SLIDER
 19
@@ -260,25 +269,28 @@ NIL
 10.0
 true
 false
+"" ""
 PENS
-"default" 1.0 0 -13345367 true
+"default" 1.0 0 -13345367 true "" ""
 
 @#$#@#$#@
-Credits
---------
+# Pareto Learning
 
-Title: Pareto Learning
+## CREDITS
 
-Author: Jose M Vidal
+Jose M Vidal
+
+## WHAT IS IT?
 
 Description: An implementation of conditional joint action learners (CJAL) in the prisoner's dilemma as described in:
-<ul>
-<li>
-Dipyaman Banerjee and Sandip Sen. <a href="http://jmvidal.cse.sc.edu/lib/banerjee07a.html">Reaching pareto-optimality in prisoner's dilemma using conditional joint action learning</a>. <i>Autonomous Agents and Multi-Agent Systems,</i> 15(1):91--108, Kluwer Academic Publishers. 2007.
-</li>
-</ul>
+
+ * Dipyaman Banerjee and Sandip Sen. [Reaching pareto-optimality in prisoner's dilemma using conditional joint action learning](http://jmvidal.cse.sc.edu/lib/banerjee07a.html). _Autonomous Agents and Multi-Agent Systems,_ 15(1):91--108, Kluwer Academic Publishers. 2007.
+
 These agents reach the Pareto optimal (cooperate,cooperate) solution in repeated play.
 
+## CHANGES
+
+20100623
 @#$#@#$#@
 default
 true
@@ -563,7 +575,7 @@ Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

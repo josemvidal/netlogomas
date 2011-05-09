@@ -11,7 +11,11 @@ globals [actions attendance]
 ;attendance is the attendance vector this week
 
 to setup
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   create-agents num-agents [
     hide-turtle
     setxy 0 who
@@ -123,7 +127,7 @@ end
 GRAPHICS-WINDOW
 214
 10
-405
+459
 1672
 -1
 -1
@@ -145,6 +149,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 SLIDER
 7
@@ -176,6 +181,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 7
@@ -222,6 +228,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 144
@@ -238,6 +245,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 PLOT
 409
@@ -253,8 +261,9 @@ NIL
 10.0
 true
 false
+"" ""
 PENS
-"default" 1.0 0 -16777216 true
+"default" 1.0 0 -16777216 true "" ""
 
 PLOT
 408
@@ -270,8 +279,9 @@ NIL
 3.0
 true
 false
+"" ""
 PENS
-"default" 1.0 0 -16777216 true
+"default" 1.0 0 -16777216 true "" ""
 
 CHOOSER
 8
@@ -284,18 +294,27 @@ reward-function
 2
 
 @#$#@#$#@
-Title: COIN
-Author: Jose M. Vidal
+# COIN  
 
-Description: This model implements the COllective INtelligence framework and attempts to reproduce the results from
+## WHAT IS IT?
 
-<ul><li>David Wolpert and Kagan Tumer. <a href="http://jmvidal.cse.sc.edu/lib/wolpert01a.html">Optimal Payoff Functions for Members of Collectives</a>. <i>Advances in Complex Systems,</i>  4(2--3):265--279, 2001.</li></ul>
+This model implements the COllective INtelligence framework and attempts to reproduce the results from
+
+ * David Wolpert and Kagan Tumer. [Optimal Payoff Functions for Members of Collectives](http://jmvidal.cse.sc.edu/lib/wolpert01a.html). _Advances in Complex Systems,_  4(2--3):265--279, 2001.
 
 It implements the wonderful life utility (WLU) clamped down to 0 (no attendance) and 1 (attend every day) and the aristrocatic utility function for the El Farol Bar problem. Since the paper does not mention the exact parameter values used I have been unable to exactly reproduce their results. Namely, this simulation seems to take longer to converge than theirs.
 
 Each row in the main output window represents one agent and each of the 7 columns is a day of the week. The patch is set to blue when the agent attends that particular night. Note that the agent often converge if you let the model run over 1000 steps.
 
 Optimal global utility is achieved, for num-nights=1, if 3 agents attend every night except one night when all the other agents attend.
+
+## CREDITS
+
+Jose M Vidal
+
+## CHANGES
+
+20100623
 @#$#@#$#@
 default
 true
@@ -591,7 +610,7 @@ Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

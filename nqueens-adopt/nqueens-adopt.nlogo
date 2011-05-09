@@ -58,7 +58,11 @@ to setup-queens
 end
 
 to setup
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   setup-patches
   setup-queens
   ask queens [initialize]
@@ -269,6 +273,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 BUTTON
 2
@@ -285,6 +290,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 2
@@ -316,6 +322,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 164
@@ -332,6 +339,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SWITCH
 2
@@ -358,8 +366,9 @@ NIL
 10.0
 true
 false
+"" ""
 PENS
-"default" 1.0 0 -16777216 true
+"default" 1.0 0 -16777216 true "" ""
 
 MONITOR
 175
@@ -373,19 +382,21 @@ sum ([messages-received] of queens)
 11
 
 @#$#@#$#@
-Title: NQueens Adopt
-Author: Jose M Vidal
-Description:
-This program solves the n-queens problem using the Adopt algorith.
-The Adopt algorithm appears in
-<ul>
-<li>
-Pragnesh Jay Modi, Wei-Min Shen, Milind Tambe, and Makoto Yokoo. 
-<a href="http://jmvidal.cse.sc.edu/library/index.html#modi02a">
-An Asynchronous Complete Method for General Distributed Constraint Optimization</a>.
-In Proceedings of Autonomous Agents and Multi-Agent Systems Workshop on Distributed Constraint Reasoning, p. 104--118, 2002.
-</li>
-</ul>
+# NQueens Adopt  
+
+## WHAT IS IT?  
+This program solves the n-queens problem using the Adopt algorith.  
+The Adopt algorithm appears in  
+
+ * Pragnesh Jay Modi, Wei-Min Shen, Milind Tambe, and Makoto Yokoo. [An Asynchronous Complete Method for General Distributed Constraint Optimization](http://jmvidal.cse.sc.edu/library/index.html#modi02a). In _Proceedings of Autonomous Agents and Multi-Agent Systems Workshop on Distributed Constraint Reasoning_, p. 104--118, 2002.
+
+## CREDITS
+
+Jose M Vidal
+
+## CHANGES
+
+20100623
 @#$#@#$#@
 default
 true
@@ -616,7 +627,7 @@ Polygon -6459832 true true 46 128 33 120 21 118 11 123 3 138 5 160 13 178 9 192 
 Polygon -6459832 true true 67 122 96 126 63 144
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

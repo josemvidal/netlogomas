@@ -3,7 +3,11 @@ globals [rand-list rand-list-nozero inside-move found]
 
 ; Called when user clicks on the setup button
 to setup
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   set rand-list [-1 -0.5 0 0.5 1]  ; initializes the list of random numbers (used for creating error)
   set rand-list-nozero [-0.5 -0.25 0.25 0.5]
   set inside-move [1 0 0 0 0 0 0 0 0 0]
@@ -367,6 +371,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 SLIDER
 8
@@ -398,6 +403,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 78
@@ -414,6 +420,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 155
@@ -430,6 +437,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 8
@@ -446,37 +454,43 @@ NIL
 NIL
 NIL
 NIL
+1
 
 @#$#@#$#@
-Title: Shapebugs
-Author: Matt Baker
-Description:
-This is an implementation of the Shapebugs algorithm from
-<ul>
-<li>Jimming Cheng, Winston Cheng, and Radhika Nagpal. <a href="http://jmvidal.cse.sc.edu/lib/cheng05a.html">&ldquo;Robust and Self-Repairing Formation Control for Swarms of Mobile Agents&rdquo;</a>. In <i>Proceedings of the Twentieth National Conference on Artificial Intelligence,</i> p. 59--64, AAAI Press. 2005</li>
-</ul>
+# Shapebugs
+
+## CREDITS
+
+Matt Baker  
+
+## WHAT IS IT?
+
+This is an implementation of the Shapebugs algorithm from  
+
+ * Jimming Cheng, Winston Cheng, and Radhika Nagpal. [Robust and Self-Repairing Formation Control for Swarms of Mobile Agents](http://jmvidal.cse.sc.edu/lib/cheng05a.html). In _Proceedings of the Twentieth National Conference on Artificial Intelligence,_ p. 59--64, AAAI Press. 2005.
 
 My program begins (via the setup button) by randomly dispersing the agents throughout the display.  All agents start in the lost state and assume that they are outside of the desired shape.  An agent inside the shape is assumed to have been found.
 
-Each agent's movement is as follows:
-<ul>
-<li>If a neighbor reaches a minimum distance the agent repels that neighbor</li>
-<li>If an agent finds itself inside of the desired shape, it will follow the above rules as long as such movement does not take it outside of the shape</li>
-<li>If an agent is inside of the shape, and it determines that its next move will take it outside of the shape, it will instead do one of 2 things:
-	(a) Stay still: 90% probability
-	(b) Move either slightly to the right, left, up, or down: 10% probability</li>
-</ul>
+Each agent's movement is as follows:  
 
-Agent colors:
-<ul>
-<li>A red agent is an agent outside of the desired shape</li>
-<li>A blue agent is an agent inside of the desired shape</li>
-<li>A green agent is an agent that has been displaced</li>
-</ul>
+ * If a neighbor reaches a minimum distance the agent repels that neighbor
+ * If an agent finds itself inside of the desired shape, it will follow the above rules as long as such movement does not take it outside of the shape.
+ * If an agent is inside of the shape, and it determines that its next move will take it outside of the shape, it will instead do one of 2 things:
+  * Stay still: 90% probability
+  * Move either slightly to the right, left, up, or down: 10% probability</li>  
+
+Agent colors:  
+ * A red agent is an agent outside of the desired shape
+ * A blue agent is an agent inside of the desired shape
+ * A green agent is an agent that has been displaced
 
 Agents can be added or removed dynamically via the slider.  The shake button chooses a random square from the screen and moves all agents within that square in random directions away from their starting positions.
 
 Note: I found that using 1,000+ agents seems to work best for modeling the shape.
+
+## CHANGES
+
+20100623
 @#$#@#$#@
 default
 true
@@ -747,7 +761,7 @@ Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

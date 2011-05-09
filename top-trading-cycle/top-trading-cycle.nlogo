@@ -12,7 +12,11 @@ globals [cycle-steps]
 
 
 to setup
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   ask patches [set pcolor white]
   create-agents num-agents [
     set color blue
@@ -129,6 +133,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 SLIDER
 4
@@ -160,6 +165,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 74
@@ -176,6 +182,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 140
@@ -192,6 +199,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 PLOT
 3
@@ -207,8 +215,9 @@ Num Agents
 10.0
 true
 false
+"" ""
 PENS
-"default" 1.0 1 -16777216 true
+"default" 1.0 1 -16777216 true "" ""
 
 BUTTON
 5
@@ -225,33 +234,39 @@ NIL
 NIL
 NIL
 NIL
+1
 
 @#$#@#$#@
-Title: Top Trading Cycle Algorithm
-Author: Jose M Vidal
-Description:
+# Top Trading Cycle Algorithm  
+## CREDITS
 
-In this problem every node represents an agent with a house that he wants to trade. Every agent has an ordered preference of the other agents' houses he prefers (this list includes the agent's own house). The trick then is to get all agents to trade houses so that they all end up in a house that is at least as good, in their eyes, as the one they currently have.<p/>
+Jose M Vidal  
 
-The Top Trading Cycle Algorithm (TTCA) solves this problem using a very simple greedy method. It was first proposed in:<p/>
-<ul>
-<li>Lloyd Shapley and Herbert Scarf. <a href="http://jmvidal.cse.sc.edu/lib/shapley74a.html">On cores and indivisibility</a>. <i>Journal of Mathematical Economics,</i> 1(1):23--37, 1974.</li>
-</ul>
---------
+## WHAT IS IT?
 
-The algorithm is:
-<pre>
-while there are agents in the game
---each agent points to the one it prefers most
- --all agents that are in a loop drop out of the game
-</pre>
+In this problem every node represents an agent with a house that he wants to trade. Every agent has an ordered preference of the other agents' houses he prefers (this list includes the agent's own house). The trick then is to get all agents to trade houses so that they all end up in a house that is at least as good, in their eyes, as the one they currently have.
 
-In this animation the blue nodes are the ones that have not traded and the green nodes have already traded. Once a trade cycle is found all the links in the cycle turn black. The edges represent an agent's most preferred house where a node with no edge prefers its own house. As the algorithm runs the nodes adjust their edges in case their most preferred node turns green.<p/>
+The Top Trading Cycle Algorithm (TTCA) solves this problem using a very simple greedy method. It was first proposed in:
 
-TTCA is guaranteed to find a solution, and that solution is in the core. That is, there is no subset of agents that could deviate from this solution and everyone one of them receive a house that they like better than the one the got under TTCA.<p/>
+ * Lloyd Shapley and Herbert Scarf. [On cores and indivisibility](http://jmvidal.cse.sc.edu/lib/shapley74a.html). _Journal of Mathematical Economics,_ 1(1):23--37, 1974.
+
+## HOW DOES IT WORK?
+
+The algorithm is:  
+
+     while there are agents in the game  
+     --each agent points to the one it prefers most
+     --all agents that are in a loop drop out of the game  
+
+In this animation the blue nodes are the ones that have not traded and the green nodes have already traded. Once a trade cycle is found all the links in the cycle turn black. The edges represent an agent's most preferred house where a node with no edge prefers its own house. As the algorithm runs the nodes adjust their edges in case their most preferred node turns green.
+
+TTCA is guaranteed to find a solution, and that solution is in the core. That is, there is no subset of agents that could deviate from this solution and everyone one of them receive a house that they like better than the one the got under TTCA.
 
 I have extended the basic algorithm with a distributed method for identifying cycles. In this program each agent only talks to the one it prefers the most. Of course, if the one it prefers most drops out of the game then the agent talks to the his next most prefered agent that is still in the game. This implementation cheats in that the agents do know the total number of other agents that are blue.
 
+## CHANGES
+
+20100623
 
 @#$#@#$#@
 default
@@ -537,7 +552,7 @@ Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

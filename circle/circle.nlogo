@@ -3,7 +3,11 @@
 ; Jose M Vidal
 
 to setup
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   create-n-turtles num-turtles
 end
 
@@ -74,6 +78,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 SLIDER
 3
@@ -120,6 +125,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 83
@@ -136,6 +142,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 164
@@ -152,6 +159,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 3
@@ -168,6 +176,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 3
@@ -196,14 +205,23 @@ clockwise
 -1000
 
 @#$#@#$#@
-Title: Circle
-Author: Jose M Vidal
-Description:
-A very simple application where the turtles move around in a circle.
-It serves as a fun example of emergent behavior. It also raises
-interesting questions: What is the most robust way to implement this? What if
-different people implement different turtles? What if we add some
+# Circle  
+
+## WHAT IS IT?
+
+A very simple application where the turtles move around in a circle.  
+It serves as a fun example of emergent behavior. It also raises  
+interesting questions: What is the most robust way to implement this? What if  
+different people implement different turtles? What if we add some  
 limitations to the environment? etc.
+
+## CREDITS
+
+Jose M Vidal
+
+## CHANGES
+
+20100623
 @#$#@#$#@
 default
 true
@@ -398,7 +416,7 @@ Polygon -6459832 true true 46 128 33 120 21 118 11 123 3 138 5 160 13 178 9 192 
 Polygon -6459832 true true 67 122 96 126 63 144
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

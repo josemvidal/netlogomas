@@ -1,5 +1,5 @@
 breed [ agents agent ]
-breed [ tasks task ]
+breed [ jobs job ]
 ;breed [ links link ]
 
 ;my-skills: Vector which contains a number (0-1) that depicts an agent's performance with a specific skill.
@@ -9,25 +9,29 @@ breed [ tasks task ]
 ;joined: the coalition the agent is associated with
 agents-own [ my-skills W S joined ]
 
-;requirements: Vector of requirements for a task that identifies the need of each skill.
+;requirements: Vector of requirements for a job that identifies the need of each skill.
 ;              *Size determined by num-skills and enumerated in the same manner as my-skills.
-;coalition-in-use: As coalitions are associated with a task, they are added to this list for record-keeping
-tasks-own [ requirements coalition-in-use ]
+;coalition-in-use: As coalitions are associated with a job, they are added to this list for record-keeping
+jobs-own [ requirements coalition-in-use ]
 
 ;L: global list of coalitions
 globals [ L ]
 
 to setup
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   create-agents num-agents
-  create-tasks num-tasks
+  create-jobs num-jobs
   setup-agents
-  setup-tasks
+  setup-jobs
   setup-L
 end
 
 to find-co
-  foreach ([who] of tasks) [ ask agents [ find-coalition who ? ] ]
+  foreach ([who] of jobs) [ ask agents [ find-coalition who ? ] ]
 end
 
 to setup-agents
@@ -45,9 +49,9 @@ to setup-agents
     output-show my-skills ]
 end
 
-to setup-tasks
+to setup-jobs
   output-show "requirements:"
-  ask tasks [
+  ask jobs [
     set coalition-in-use []
     set label coalition-in-use
     set requirements build-list-randomly num-skills max-need
@@ -55,7 +59,7 @@ to setup-tasks
     set size 3
     set color (color - 20) ;make it darker for readability
     set xcor 13
-    set ycor (30 / num-tasks) * ceiling((who - num-agents) / 2) * (-1)^(who)
+    set ycor (30 / num-jobs) * ceiling((who - num-agents) / 2) * (-1)^(who)
     output-show requirements ]
 end
 
@@ -85,7 +89,7 @@ to-report build-list-randomly [ sz limit ]
 end
 
 ;find-coalition algorithm.
-to find-coalition [ agent-i task_i ]
+to find-coalition [ agent-i job_i ]
   ;L_i: list of coalitions containing agent-i
   ;Max_i: [S_i* w_i*] retrieved after evaluating all coalitions in L_i
   ;w_max: the maximum value in W*
@@ -103,7 +107,7 @@ to find-coalition [ agent-i task_i ]
       show (word "trace> L_i: "  L_i )]
     set W []
     set S []
-    set Max_i  max-coalition L_i task_i
+    set Max_i  max-coalition L_i job_i
     if( trace ) [
       show (word "trace> S*(" agent-i "): " item 0 Max_i)
       show (word "trace> w*(" agent-i "): " item 1 Max_i)]
@@ -118,9 +122,9 @@ to find-coalition [ agent-i task_i ]
         set joined S_max
         if ( trace ) [
           show (word "trace> Agent " agent-i " added to the coalition.")]
-        create-link-with (task task_i) [ set color (((position S_max L_i) mod 7) * 10 + 35) ]
-        set heading towards task task_i 
-        ask task task_i [ 
+        create-link-with (job job_i) [ set color (((position S_max L_i) mod 7) * 10 + 35) ]
+        set heading towards job job_i 
+        ask job job_i [ 
           set coalition-in-use lput S_max coalition-in-use
           set coalition-in-use remove-duplicates coalition-in-use ;a coalition of n-size will add to the list n times, cleanup
           set label coalition-in-use ] ] ] ;if current agent is in the coalition, join it
@@ -146,8 +150,8 @@ end
 
 ;Fetches the coalition with the highest value in a given set
 ;c_lst: list of possible coalitions
-;task_i: current task
-to-report max-coalition [ c_lst task_i ]
+;job_i: current job
+to-report max-coalition [ c_lst job_i ]
   ;maximum-value: v(S*)
   ;maximum-col: S*
   ;sum_vector: temporary space to hold the sum of my-skills for each agent in the coalition
@@ -176,7 +180,7 @@ to-report max-coalition [ c_lst task_i ]
 
     ;calculate the value for the coalition
     repeat num-skills [
-      set sum_vector replace-item index sum_vector (-1 * abs( precision ( (item index [requirements] of (task task_i)) - (item index sum_vector) ) 2 ))
+      set sum_vector replace-item index sum_vector (-1 * abs( precision ( (item index [requirements] of (job job_i)) - (item index sum_vector) ) 2 ))
       set index ( index + 1 ) ]
     if ( ((sum sum_vector) / (length ?)) >= maximum-value ) [  ;check v(S)/|S| against current maximum
       set maximum-value precision ((sum sum_vector) / (length ?)) 2
@@ -230,6 +234,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 SLIDER
 12
@@ -266,8 +271,8 @@ SLIDER
 43
 184
 76
-num-tasks
-num-tasks
+num-jobs
+num-jobs
 1
 15
 5
@@ -291,6 +296,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 OUTPUT
 749
@@ -329,6 +335,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SWITCH
 88
@@ -342,17 +349,16 @@ trace
 -1000
 
 @#$#@#$#@
-Title: Task Allocation
-Author: William Wiles
-Description:
+# Task Allocation  
 
-Solves a task allocation problem with the coalition formation algorithm from
-<ul><li>Onn Shehory and Sarit Kraus. <a href="http://jmvidal.cse.sc.edu/lib/shehory98a.html">Methods for Task Allocation via Agent Coalition Formation</a>. <i>Artificial Intelligence,</i> May; 101(1-2):165--200, 1998.</li></ul>
+## WHAT IS IT?
 
-------
+Solves a task allocation problem with the coalition formation algorithm from  
 
-HOW IT WORKS
-------------
+ * Onn Shehory and Sarit Kraus. [Methods for Task Allocation via Agent Coalition Formation](http://jmvidal.cse.sc.edu/lib/shehory98a.html). _Artificial Intelligence,_ May; 101(1-2):165--200, 1998.
+
+## HOW IT WORKS
+
 From the problem set description,
 
 There are num-skills (slider) available to the agents. Each agent (there are num-agents of them) is born with a my-skills vector which contains a number between 0 a 1 for each one of these skills. These vectors represent how well the agent can perform each one of the skills.
@@ -361,13 +367,12 @@ There is also a breed of tasks, of which there are num-tasks. Each task has a re
 
 L is the list of all possible coalitions, and is found by each state adding the possible combinations of itself to the current sets in L, while pruning duplicates.  Since each member of a coalition will add itself, the number of duplicates increases linearly as the coalition size increases.  However, the code is direct and short.
 
-
 Once this initialization takes place, the v(S) is calculated by each agent for its related coalitions, i.e. all possible coalitions it can be involved with, against each task.  The v(S) are calculated during the find-coalition implementation instead of beforehand to cut down on global variables, since message-passing will take care of any agent's information needs.
 
 find-coalition is executed after setup.
 
-HOW TO USE IT
--------------
+## HOW TO USE IT
+
 To visualize the algorithm, links indicate an association between an agent and a task.  Tasks are in column formation on the right (Q1/Q4) hemisphere of the world; while, agents are arranged similarly on the left (Q2/Q3) hemisphere of the world.  
 
 Agents in the same coalition for a task will have the same color link connecting them to that specific task.
@@ -378,33 +383,27 @@ The tasks show their coalition solution as their label.  The agents show their I
 
 The trace toggle will allow you to view the find-coalition algorithm in a step-by-step basis.  Expect alot of output for more than 3 agents or tasks.
 
-THINGS TO NOTICE
-----------------
+## THINGS TO NOTICE
+
 If the max-need of the tasks is set above the number of agents, the problem becomes super-additive.
 
+## THINGS TO TRY
 
-THINGS TO TRY
--------------
 Setting the max-need above the number of agents.
 
 Setting the mas-need to zero.
 
+## EXTENDING THE MODEL
 
-EXTENDING THE MODEL
--------------------
 Performance analysis of the L constructor and find-coalition's max-arg (max-coalition in the implementation) for large agentsets.  Possible future pruning and optimization in these areas
 
+## CREDITS AND REFERENCES
 
-CREDITS AND REFERENCES
-----------------------
-Problem Set Description:
-http://jmvidal.cse.sc.edu/csce782/index.html
+William Wiles  
 
-Fundamentals of Multiagent Systems:
-http://jmvidal.cse.sc.edu/library/vidalfmas.pdf
+## CHANGES
 
-Netlogo Handbook:
-http://ccl.northwestern.edu/netlogo/docs/
+20100623
 @#$#@#$#@
 default
 true
@@ -700,7 +699,7 @@ Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

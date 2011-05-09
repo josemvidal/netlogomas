@@ -27,7 +27,11 @@ to-report get-random-ycor
 end
 
 to setup
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   set-default-shape walkers "box"
   set-default-shape targets "circle"
   set-default-shape hazards "box"
@@ -194,6 +198,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
+30.0
 
 SLIDER
 3
@@ -255,6 +260,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 84
@@ -271,6 +277,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 165
@@ -287,6 +294,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 3
@@ -351,7 +359,7 @@ SWITCH
 108
 show-hazard
 show-hazard
-1
+0
 1
 -1000
 
@@ -362,7 +370,7 @@ SWITCH
 141
 show-to-home
 show-to-home
-1
+0
 1
 -1000
 
@@ -415,20 +423,22 @@ hazards
 11
 
 @#$#@#$#@
-Title: Path-Finding Using Pheromones
-Author: Jose M Vidal
-Description:
-In this problem a series of drones tries to find a path from the source
-to the target while staying away from the obstacles. They use pheromones.
+# Path-Finding Using Pheromones  
+## CREDITS 
+
+Jose M Vidal
+
+## WHAT IS IT?
+
+In this problem a series of drones tries to find a path from the source  
+to the target while staying away from the obstacles. They use pheromones.  
 I tried to implement something similar to
-<ul>
-<li>
-H. Van Dyke Parunak, Sven Brueckner, and John Sauter. 
-<a href="http://jmvidal.cse.sc.edu/library/index.html#parunak02a">
-Synthetic pheronome mechanisms for coordination of unmanned vehicles</a>. 
-In Proceedings of the First Intenational Joint Conference on Autonomous Agents and Multiagent Systems, pages 448-450, Bologna, Italy, 2002. ACM Press, New York, NY.
-</li>
-</ul>
+  
+* H. Van Dyke Parunak, Sven Brueckner, and John Sauter. [Synthetic pheronome mechanisms for coordination of unmanned vehicles](http://jmvidal.cse.sc.edu/library/parunak02a.html) In _Proceedings of the First Intenational Joint Conference on Autonomous Agents and Multiagent Systems_, pages 448-450, Bologna, Italy, 2002. ACM Press, New York, NY.
+
+## CHANGES
+
+20100623
 @#$#@#$#@
 default
 true
@@ -623,7 +633,7 @@ Polygon -6459832 true true 46 128 33 120 21 118 11 123 3 138 5 160 13 178 9 192 
 Polygon -6459832 true true 67 122 96 126 63 144
 
 @#$#@#$#@
-NetLogo 4.1
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
