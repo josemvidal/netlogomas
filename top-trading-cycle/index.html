@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Top Trading Cycle Algorithm  </title>
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="AUTHOR" content="<p>Jose M Vidal </p>"></meta>
+</head>
+<body>
+<center>
+<h1> Top Trading Cycle Algorithm  </h1>
+<applet code="org.nlogo.lite.Applet"
+        width="670" height="480"
+        archive="../NetLogoLite.jar">
+  <param name="DefaultModel"
+         value="top-trading-cycle.nlogo">
+</applet>
+</center>
+<h1>Top Trading Cycle Algorithm</h1><h2>CREDITS</h2><p>Jose M Vidal </p><h2>WHAT IS IT?</h2><p>In this problem every node represents an agent with a house that he wants to trade. Every agent has an ordered preference of the other agents' houses he prefers (this list includes the agent's own house). The trick then is to get all agents to trade houses so that they all end up in a house that is at least as good, in their eyes, as the one they currently have.</p><p>The Top Trading Cycle Algorithm (TTCA) solves this problem using a very simple greedy method. It was first proposed in:</p>
+<ul>
+  <li>Lloyd Shapley and Herbert Scarf. <a href="http://jmvidal.cse.sc.edu/lib/shapley74a.html">On cores and indivisibility</a>. <em>Journal of Mathematical Economics,</em> 1(1):23--37, 1974.</li>
+</ul><h2>HOW DOES IT WORK?</h2><p>The algorithm is: </p>
+<pre><code> while there are agents in the game  
+ --each agent points to the one it prefers most
+ --all agents that are in a loop drop out of the game  
+</code></pre><p>In this animation the blue nodes are the ones that have not traded and the green nodes have already traded. Once a trade cycle is found all the links in the cycle turn black. The edges represent an agent's most preferred house where a node with no edge prefers its own house. As the algorithm runs the nodes adjust their edges in case their most preferred node turns green.</p><p>TTCA is guaranteed to find a solution, and that solution is in the core. That is, there is no subset of agents that could deviate from this solution and everyone one of them receive a house that they like better than the one the got under TTCA.</p><p>I have extended the basic algorithm with a distributed method for identifying cycles. In this program each agent only talks to the one it prefers the most. Of course, if the one it prefers most drops out of the game then the agent talks to the his next most prefered agent that is still in the game. This implementation cheats in that the agents do know the total number of other agents that are blue.</p><h2>CHANGES</h2><p>20100623</p>
+</body>
+</html>

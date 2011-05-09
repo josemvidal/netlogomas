@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Asynchronous Backtracking  </title>
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="AUTHOR" content="<p>Gary Fredericks </p>"></meta>
+</head>
+<body>
+<center>
+<h1> Asynchronous Backtracking  </h1>
+<applet code="org.nlogo.lite.Applet"
+        width="773" height="547"
+        archive="../NetLogoLite.jar">
+  <param name="DefaultModel"
+         value="ABTgc.nlogo">
+</applet>
+</center>
+<h1>Asynchronous Backtracking</h1><h2>CREDITS</h2><p>Gary Fredericks </p><h2>WHAT IS IT?</h2><p>Generates and solves graph coloring problems using ABT.</p><h2>NODE VALUES</h2><p>I used simple integers to represent node values, corresponding to the indexes in the built-in base-colors array. So in a 3-color graph, the values will be the numbers [0,1,2], and they will refer to the corresponding colors in the base-colors array.</p><h2>PRIORITIES</h2><p>Priorities are implemented by who number, with lower numbers having lower priorities.</p><h2>SOLVABLE GRAPHS</h2><p>The program as written always generates solvable graphs. It does this by<br/>
+1) Generating the specified number of turtles<br/>
+2) Assigning random colors to each turtle (from the specified number of colors)<br/>
+3) Generating legal links until either the links-to-nodes ratio has been reached, or no legal links can be generated. In the latter case, a warning is written to the console.</p><h2>GENERATING NO-GOODS</h2><p>I implemented two no-good generators. The first, which is used by default, is the naive generator which uses the local view. I also tried to create a hyperresolution generator, but my simple implementation would just concatenate all of the previously generated nogoods (filtering out the elements referring to self), which certainly isn't sufficient to solve the problem, and may also be worse than the local-view version (it also generates tautological nogoods most of the time, i.e. NOT(TURTLE1(A) ^ TURTLE1(B) ^ ...)). If I had time, I think I would enjoy trying to do hyperresolution properly.</p><h2>IMPLEMENTATION NOTES</h2><p>1) I used the table extension for the local-view datastructure, with the who-numbers for keys.<br/>
+2) A single nogood is represented as a list of pairs, where [[1 3] [2 4]] means that "turtle 1 having value 3 and turtle 2 having value 4" is no-good.<br/>
+3) Despite using who-numbers for local-view and no-goods, I implemented "naybors" as a list of turtles. Could've gone either way I guess.</p><h2>CHANGES</h2><p>20100623</p>
+</body>
+</html>

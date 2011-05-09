@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Marriage Problem  </title>
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="AUTHOR" content="<p>Jose M Vidal</p>"></meta>
+</head>
+<body>
+<center>
+<h1> Marriage Problem  </h1>
+<applet code="org.nlogo.lite.Applet"
+        width="651" height="461"
+        archive="../NetLogoLite.jar">
+  <param name="DefaultModel"
+         value="marriage-problem.nlogo">
+</applet>
+</center>
+<h1>Marriage Problem</h1><h2>WHAT IS IT?</h2><p>There are 64 single men and 64 single women, all heterosexual its is presumed, who want to get married. Each one ranks all possible mates. The problem is how to find the set of marriages so that no two people (one man one woman) that are not married to each other do, in fact, prefer each other over their assigned partners. </p><p>The solution we implement is the deferred acceptance algorithm from </p>
+<ul>
+  <li>D. Gale and L. S. Shapley. <a href="http://jmvidal.cse.sc.edu/lib/gale62a.html">College Admissions and the Stability of Marriage</a>. <em>The American Mathematical Monthly,</em> 69(1):9--15, Mathematical Association of America. 1962.</li>
+</ul><p>In this model the woman are the pink circles and the men are blue (well, cyan). When a man connects to a woman (edge) it means he proposes to her. The numbers in the nodes represent the preference of that node for its partner. The algorithm works as follows</p>
+<ol>
+  <li>while there are women without a proposal</li><li>every man proposes to the his most preferred woman who has not rejected him</li><li>every woman with multiple proposals rejects all but the one she prefers the most</li>
+</ol><p>When done, all women have one proposal which they accept and live happily ever after. The resulting marriages are stable.</p><p>The scatter plot shows the marriages that we find, where the x coordinate is the man's preference for the woman and the y coordinate is the woman's preference for the man (1 means her most preferred). Notice that even though women turn down men, the men do much better.</p><h2>CREDITS</h2><p>Jose M Vidal</p><h2>CHANGES</h2><p>20100623</p>
+</body>
+</html>

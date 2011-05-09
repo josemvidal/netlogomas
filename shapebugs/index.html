@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Shapebugs</title>
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="AUTHOR" content="<p>Matt Baker </p>"></meta>
+</head>
+<body>
+<center>
+<h1> Shapebugs</h1>
+<applet code="org.nlogo.lite.Applet"
+        width="759" height="471"
+        archive="../NetLogoLite.jar">
+  <param name="DefaultModel"
+         value="shapebugs.nlogo">
+</applet>
+</center>
+<h1>Shapebugs</h1><h2>CREDITS</h2><p>Matt Baker </p><h2>WHAT IS IT?</h2><p>This is an implementation of the Shapebugs algorithm from </p>
+<ul>
+  <li>Jimming Cheng, Winston Cheng, and Radhika Nagpal. <a href="http://jmvidal.cse.sc.edu/lib/cheng05a.html">Robust and Self-Repairing Formation Control for Swarms of Mobile Agents</a>. In <em>Proceedings of the Twentieth National Conference on Artificial Intelligence,</em> p. 59--64, AAAI Press. 2005.</li>
+</ul><p>My program begins (via the setup button) by randomly dispersing the agents throughout the display. All agents start in the lost state and assume that they are outside of the desired shape. An agent inside the shape is assumed to have been found.</p><p>Each agent's movement is as follows: </p>
+<ul>
+  <li>If a neighbor reaches a minimum distance the agent repels that neighbor</li><li>If an agent finds itself inside of the desired shape, it will follow the above rules as long as such movement does not take it outside of the shape.</li><li>If an agent is inside of the shape, and it determines that its next move will take it outside of the shape, it will instead do one of 2 things:</li><li>Stay still: 90% probability</li><li>Move either slightly to the right, left, up, or down: 10% probability</li></li>
+</ul><p>Agent colors:<br/>
+ * A red agent is an agent outside of the desired shape
+ * A blue agent is an agent inside of the desired shape
+ * A green agent is an agent that has been displaced</p><p>Agents can be added or removed dynamically via the slider. The shake button chooses a random square from the screen and moves all agents within that square in random directions away from their starting positions.</p><p>Note: I found that using 1,000+ agents seems to work best for modeling the shape.</p><h2>CHANGES</h2><p>20100623</p>
+</body>
+</html>

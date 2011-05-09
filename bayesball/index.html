@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Bayes-Ball Algorithm</title>
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="AUTHOR" content="<p>Alicia Ruvinsky</p>"></meta>
+</head>
+<body>
+<center>
+<h1> Bayes-Ball Algorithm</h1>
+<applet code="org.nlogo.lite.Applet"
+        width="993" height="495"
+        archive="../NetLogoLite.jar">
+  <param name="DefaultModel"
+         value="bayesball.nlogo">
+</applet>
+</center>
+<h1>Bayes-Ball Algorithm</h1><h2>WHAT IS IT?</h2><p>This model implements the Bayes-Ball algorithm. The purpose to this simulation is to provide a visualization that readers of Shachter's article can explore in order to better understand the process of the algorithm as well as the results it elicits.</p>
+<ol>
+  <li>Ross D. Shachter. <a href="http://jmvidal.cse.sc.edu/lib/shachter98a.html">Bayes-Ball: The Rational Pastime (for Determining Irrelevance and Requisite Information in Belief Networks and Influence Diagrams)</a>. In <em>Proceedings of the Fourteenth Conference in Uncertainty in Artificial Intelligence,</em> p. 480--487, 1998.</li>
+</ol><h2>HOW IT WORKS</h2><p>This model is an implementation of the algorithm described by Ross D. Shachter in his 1998 article "Bayes-Ball: The Rational Pastime (for Deteriming Irrelevance and Requisite Information in Belief Networks and Influence Diagrams)."</p><p>The algorithm describes a mechanism for identifing irrelevant nodes, requisite probability nodes, and requisite observation nodes when querying for a specified node given a set of evidence nodes. The input to the algorithm is a belief network, a node on which the query is oriented, and a set of nodes for which evidence is given.</p><p>Query nodes comprise the set of nodes J. These nodes are tinted light blue. Nodes that have evidence on them comprise the set of nodes K and have a red star in the middle. All other nodes are probabilistic nodes tinted yellow. This implementation disregards deterministic nodes.</p><p>The algorithm will start the "bouncind ball" at the query node(s) comprising the set of nodes J (tinted blue in the simulation), and then pass the ball around in the following manner:</p>
+<ul>
+  <li>An unobserved (no evidence) probabilistic node will pass the ball through to its parents if the ball was sent from a child, and through to its children if the ball was sent from a parent. When the ball is passed to an unobserved node from a child, the ball will also be bounce back to its children.</li><li>An observed node bounces back balls passed to it from a parent, but blocks any ball passed to it from a child.</li>
+</ul><h2>BUTTON DESCRIPTION</h2><p>SETUP NETWORK - this sets up a network characterized by the following parameters configurable by the user via sliders: number-nodes and number-J-nodes</p><p>MANUAL - this allows the user to manually move the nodes around in order to arrange them in a more visually appealling or expressive manner</p><p>MAKE NODES - this will create the number of nodes specified by number-nodes with a subset of these nobes colored blue to identify them as J nodes. The number of J nodes is specified by number-J-nodes.</p><p>MAKE CONNECTIONS - After clicking on this button, click on the source node of a connection followed by a destination node. Once the destination node is clicked, a link from source to destination will be created.</p><p>RANDOMLY SET EVIDENCE - this button will randomly choose a subset of nodes to be considered evidence nodes. The number of nodes chosen is specified by number-K-nodes. Evidence nodes are designated by red stars on the yellow nodes.</p><p>MANUALLY SET OR REMOVE EVIDENCE - the user can set evidence nodes themselves, or remove evidence from a node that has been starred as an evidence node. To do this, click this button and then click a node. If the node is starred (has evidence), the star will be removed (no evidence). If the node is not starred, a star will be added to this node.</p><p>CLEAR - clears view of any existing network to reveal a clear white view; useful if user wants to create her/his own network</p><p>RESET - resets the execution while preserving the currently viewed network. This allows for repeating executions on the same network with different evidence specified.</p><p>NUMBER-NODES - the number of nodes in the network</p><p>NUMBER-J-NODES - the number of nodes in the network that are being queried upon</p><p>NUMBER-K-NODES - the number of nodes that have evidence on them. This is used by the "get evidence" button.</p><h2>CREDITS</h2><p>Alicia Ruvinsky</p><h2>CHANGES</h2><p>20100623</p>
+</body>
+</html>

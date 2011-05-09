@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> COIN  </title>
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="AUTHOR" content="<p>Jose M Vidal</p>"></meta>
+</head>
+<body>
+<center>
+<h1> COIN  </h1>
+<applet code="org.nlogo.lite.Applet"
+        width="711" height="1682"
+        archive="../NetLogoLite.jar">
+  <param name="DefaultModel"
+         value="coin.nlogo">
+</applet>
+</center>
+<h1>COIN</h1><h2>WHAT IS IT?</h2><p>This model implements the COllective INtelligence framework and attempts to reproduce the results from</p>
+<ul>
+  <li>David Wolpert and Kagan Tumer. <a href="http://jmvidal.cse.sc.edu/lib/wolpert01a.html">Optimal Payoff Functions for Members of Collectives</a>. <em>Advances in Complex Systems,</em> 4(2--3):265--279, 2001.</li>
+</ul><p>It implements the wonderful life utility (WLU) clamped down to 0 (no attendance) and 1 (attend every day) and the aristrocatic utility function for the El Farol Bar problem. Since the paper does not mention the exact parameter values used I have been unable to exactly reproduce their results. Namely, this simulation seems to take longer to converge than theirs.</p><p>Each row in the main output window represents one agent and each of the 7 columns is a day of the week. The patch is set to blue when the agent attends that particular night. Note that the agent often converge if you let the model run over 1000 steps.</p><p>Optimal global utility is achieved, for num-nights=1, if 3 agents attend every night except one night when all the other agents attend.</p><h2>CREDITS</h2><p>Jose M Vidal</p><h2>CHANGES</h2><p>20100623</p>
+</body>
+</html>

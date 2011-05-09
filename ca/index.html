@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Combinatorial Auction  </title>
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="AUTHOR" content="<p>Jose M Vidal</p>"></meta>
+</head>
+<body>
+<center>
+<h1> Combinatorial Auction  </h1>
+<applet code="org.nlogo.lite.Applet"
+        width="1157" height="643"
+        archive="../NetLogoLite.jar">
+  <param name="DefaultModel"
+         value="ca.nlogo">
+</applet>
+</center>
+<h1>Combinatorial Auction</h1><h2>WHAT IS IT?</h2><p>Generates and solves a combinatorial auction. The yellow circles represent the items for sale and the green squares represent the bids. Each bid is connected to the items it is over. The square bids with the squares around them are the ones in the revenue-maximizing solution, which we find upon "setup" by running a branch-and-bids algorithm. We implement a branch and bound algorithm on both the branch on items search tree and the branch on bids search tree.</p><p>The simple branch and bound algorithms implemented here are described in</p>
+<ul>
+  <li>Jose M. Vidal. <a href="http://www.multiagent.com/fmas/">Fundamentals of Multiagent Systems: Using NetLogo Models</a>. Unpublished. 2006.</li>
+</ul><p>If you want to learn more about combinatorial auctions I recommend</p>
+<ul>
+  <li>Peter Cramton and Yoav Shoham and Richard Steinberg. <a href="http://jmvidal.cse.sc.edu/lib/cramton06a.html">Combinatorial Auctions</a>. MIT Press. 2006.</li>
+</ul><h2>CREDITS</h2><p>Jose M Vidal</p><h2>CHANGES</h2><p>20100623</p>
+</body>
+</html>

@@ -489,13 +489,11 @@ In the model, two plots are given to show how the algorithm is performing.  The 
 
 According to [1], emperical evidence shows that the optimal settings for the algorithm are: alpha = 1, beta = 5, rho = 0.5.  Try adjusting each of these settings from the optimal and take notice of how they affect the performance of the algorithm.  Watch the "Best Tour Cost" plot to see if adjustments lead to a steadier march towards the best tour or perhaps they add up to a good initial search that settles quickly into a local optimum.  Study the "Tour Cost Distribution" plot to see if changes to the evaporation rate lead to stagnation?  Can you find more optimal settings than those that have been found through previous experimentation?
 
-## CREDITS
-
-This model is an implementation of the Ant System algorithm from [1]. 
-
-When refering to this model in academic publications, please use: Roach, Christopher (2007).  NetLogo Ant System model. Computer Vision and Bio-inspired Computing Laboratory, Florida Institute of Technology, Melbourne, FL.
-
 ## REFERENCES
+
+This model is an implementation of the Ant System algorithm from: 
+
+ * Roach, Christopher (2007).  NetLogo Ant System model. Computer Vision and Bio-inspired Computing Laboratory, Florida Institute of Technology, Melbourne, FL.
 
  * Dorigo, M., Maniezzo, V., and Colorni, A., The Ant System: Optimization by a colony of cooperating agents.  IEEE Transactions on Systems, Man, and Cybernetics Part B: Cybernetics, Vol. 26, No. 1. (1996), pp. 29-41. http://citeseer.ist.psu.edu/dorigo96ant.html
 
@@ -504,7 +502,6 @@ When refering to this model in academic publications, please use: Roach, Christo
 ## CHANGES 
 
 20100428
-
 @#$#@#$#@
 default
 true

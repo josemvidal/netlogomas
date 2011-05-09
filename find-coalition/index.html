@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Task Allocation  </title>
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="AUTHOR" content="<p>William Wiles </p>"></meta>
+</head>
+<body>
+<center>
+<h1> Task Allocation  </h1>
+<applet code="org.nlogo.lite.Applet"
+        width="1159" height="471"
+        archive="../NetLogoLite.jar">
+  <param name="DefaultModel"
+         value="find-coalition.nlogo">
+</applet>
+</center>
+<h1>Task Allocation</h1><h2>WHAT IS IT?</h2><p>Solves a task allocation problem with the coalition formation algorithm from </p>
+<ul>
+  <li>Onn Shehory and Sarit Kraus. <a href="http://jmvidal.cse.sc.edu/lib/shehory98a.html">Methods for Task Allocation via Agent Coalition Formation</a>. <em>Artificial Intelligence,</em> May; 101(1-2):165--200, 1998.</li>
+</ul><h2>HOW IT WORKS</h2><p>From the problem set description,</p><p>There are num-skills (slider) available to the agents. Each agent (there are num-agents of them) is born with a my-skills vector which contains a number between 0 a 1 for each one of these skills. These vectors represent how well the agent can perform each one of the skills.</p><p>There is also a breed of tasks, of which there are num-tasks. Each task has a requirements variable which is a vector of size num-skill where each entry is a number randomly chosen between 0 and max-need. </p><p>L is the list of all possible coalitions, and is found by each state adding the possible combinations of itself to the current sets in L, while pruning duplicates. Since each member of a coalition will add itself, the number of duplicates increases linearly as the coalition size increases. However, the code is direct and short.</p><p>Once this initialization takes place, the v(S) is calculated by each agent for its related coalitions, i.e. all possible coalitions it can be involved with, against each task. The v(S) are calculated during the find-coalition implementation instead of beforehand to cut down on global variables, since message-passing will take care of any agent's information needs.</p><p>find-coalition is executed after setup.</p><h2>HOW TO USE IT</h2><p>To visualize the algorithm, links indicate an association between an agent and a task. Tasks are in column formation on the right (Q1/Q4) hemisphere of the world; while, agents are arranged similarly on the left (Q2/Q3) hemisphere of the world. </p><p>Agents in the same coalition for a task will have the same color link connecting them to that specific task.</p><p>The requirements and my-skills vectors are displayed in the output window to the right of the world. </p><p>The tasks show their coalition solution as their label. The agents show their ID.</p><p>The trace toggle will allow you to view the find-coalition algorithm in a step-by-step basis. Expect alot of output for more than 3 agents or tasks.</p><h2>THINGS TO NOTICE</h2><p>If the max-need of the tasks is set above the number of agents, the problem becomes super-additive.</p><h2>THINGS TO TRY</h2><p>Setting the max-need above the number of agents.</p><p>Setting the mas-need to zero.</p><h2>EXTENDING THE MODEL</h2><p>Performance analysis of the L constructor and find-coalition's max-arg (max-coalition in the implementation) for large agentsets. Possible future pruning and optimization in these areas</p><h2>CREDITS AND REFERENCES</h2><p>William Wiles </p><h2>CHANGES</h2><p>20100623</p>
+</body>
+</html>
