@@ -22,6 +22,7 @@ var _gaq = _gaq || [];
     <ul id="nav">
       <li><a id="aboutLink" href="#">About</a></li>
       <li><a href="http://jmvidal.cse.sc.edu">Author</a></li>
+       <li><a href="http://github.com/josemvidal/netlogomas">github</a></li>
       <li><a
       href="http://ccl.northwestern.edu/netlogo/">NetLogo</a></li>
       <li><a href="http://www.multiagent.com">MultiAgent Systems</a></li>
