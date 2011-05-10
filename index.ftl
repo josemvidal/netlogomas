@@ -22,7 +22,7 @@ var _gaq = _gaq || [];
     <ul id="nav">
       <li><a id="aboutLink" href="#">About</a></li>
       <li><a href="http://jmvidal.cse.sc.edu">Author</a></li>
-       <li><a href="http://github.com/josemvidal/netlogomas">github</a></li>
+       <li><a title="all these models are on github" href="http://github.com/josemvidal/netlogomas">github</a></li>
       <li><a
       href="http://ccl.northwestern.edu/netlogo/">NetLogo</a></li>
       <li><a href="http://www.multiagent.com">MultiAgent Systems</a></li>
@@ -32,7 +32,10 @@ var _gaq = _gaq || [];
     <div id="featuredModel">
     <a href="${models.models?first.modelName}/index.html"><img class="header" src="${models.models?first.modelName}/medium.png"/></a>
     <dl id="featuredVideo">
-      <dt><a href="${models.models?first.modelName}/index.html">${models.models?first.title}</a></dt>
+     <dt><a
+	href="${models.models?first.modelName}/index.html" title="run this model in browser">${models.models?first.title}</a> &nbsp;&nbsp;
+            <a class="download" href="${models.models?first.modelName}/${models.models?first.modelName}.nlogo" title="Download this model">&#8595</a>
+</dt>
       <dd>${models.models?first.indexdescription}</dd>
     </dl>
     </div>
@@ -64,7 +67,9 @@ var _gaq = _gaq || [];
   <h4><a class="modelLink" id="${m.modelName}"
   href="${m.modelName}/index.html" onclick="popup('${m.modelName}',${m.width},${m.height});return false;">${m.title}</a></h4>
   <div id="${m.modelName}Description" class="description">${m.indexdescription}</div>
-<h5>${m.credits} </h5>
+   <h5>${m.credits}</h5>
+  <a class="download" href="${m.modelName}/${m.modelName}.nlogo"
+ title="Download this model">&#8595</a>
 </div>
   </#if>
 </#list>
