@@ -703,8 +703,6 @@ semi-committed?
 # Container Port Simulation  
 
 ## WHAT IS IT?
-![screenshot](port.png)
-
 A simulation of a container port. We model the movement of the cranes using various utility functions to determine what is the best behavior for the crane operators. The trucks have random arrival times. More details can be found at   
 
  1. Nathan Huynh and Jose M. Vidal. [An Agent-Based Approach to Modeling Yard Cranes at Seaport Container Terminals](http://jmvidal.cse.sc.edu/papers/huynh10a.pdf). In _Proceedings of the Symposium on Theory of Modeling and Simulation_, 2010. 

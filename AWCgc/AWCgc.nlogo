@@ -982,7 +982,6 @@ sum ([nr_constraintc] of nodes)
 # Graph Coloring using Asynchronous Weak-Commitment  
   
 ## WHAT IS IT?
-![screenshot](AWCgc.png) 
 
 This is the implementation of the Asynchronous Weak-Commitment Search for the graph coloring problem. We solve the graph coloring problem using the AWCS algorithm from   
 

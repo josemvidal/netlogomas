@@ -7,14 +7,14 @@
 </head>
 <body>
 <center>
-<h1> Top Trading Cycle Algorithm  </h1>
 <applet code="org.nlogo.lite.Applet"
         width="670" height="480"
-        archive="../NetLogoLite.jar">
+        archive="../NetLogoLite.jar,table/table.jar">
   <param name="DefaultModel"
          value="top-trading-cycle.nlogo">
 </applet>
 </center>
+<a id="download" href="top-trading-cycle.nlogo">Download</a>
 <h1>Top Trading Cycle Algorithm</h1><h2>CREDITS</h2><p>Jose M Vidal </p><h2>WHAT IS IT?</h2><p>In this problem every node represents an agent with a house that he wants to trade. Every agent has an ordered preference of the other agents' houses he prefers (this list includes the agent's own house). The trick then is to get all agents to trade houses so that they all end up in a house that is at least as good, in their eyes, as the one they currently have.</p><p>The Top Trading Cycle Algorithm (TTCA) solves this problem using a very simple greedy method. It was first proposed in:</p>
 <ul>
   <li>Lloyd Shapley and Herbert Scarf. <a href="http://jmvidal.cse.sc.edu/lib/shapley74a.html">On cores and indivisibility</a>. <em>Journal of Mathematical Economics,</em> 1(1):23--37, 1974.</li>

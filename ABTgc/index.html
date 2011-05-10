@@ -7,14 +7,14 @@
 </head>
 <body>
 <center>
-<h1> Asynchronous Backtracking  </h1>
 <applet code="org.nlogo.lite.Applet"
         width="773" height="547"
-        archive="../NetLogoLite.jar">
+        archive="../NetLogoLite.jar,table/table.jar">
   <param name="DefaultModel"
          value="ABTgc.nlogo">
 </applet>
 </center>
+<a id="download" href="ABTgc.nlogo">Download</a>
 <h1>Asynchronous Backtracking</h1><h2>CREDITS</h2><p>Gary Fredericks </p><h2>WHAT IS IT?</h2><p>Generates and solves graph coloring problems using ABT.</p><h2>NODE VALUES</h2><p>I used simple integers to represent node values, corresponding to the indexes in the built-in base-colors array. So in a 3-color graph, the values will be the numbers [0,1,2], and they will refer to the corresponding colors in the base-colors array.</p><h2>PRIORITIES</h2><p>Priorities are implemented by who number, with lower numbers having lower priorities.</p><h2>SOLVABLE GRAPHS</h2><p>The program as written always generates solvable graphs. It does this by<br/>
 1) Generating the specified number of turtles<br/>
 2) Assigning random colors to each turtle (from the specified number of colors)<br/>

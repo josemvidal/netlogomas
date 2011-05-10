@@ -7,14 +7,14 @@
 </head>
 <body>
 <center>
-<h1>${title}</h1>
 <applet code="org.nlogo.lite.Applet"
         width="${width}" height="${height}"
-        archive="../NetLogoLite.jar">
+        archive="../NetLogoLite.jar,table/table.jar">
   <param name="DefaultModel"
          value="${modelName}.nlogo">
 </applet>
 </center>
+<a id="download" href="${modelName}.nlogo">Download</a>
 ${documentation}
 </body>
 </html>

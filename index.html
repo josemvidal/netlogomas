@@ -6,201 +6,407 @@
 <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body>
-<center>
-	<h1>Multiagent NetLogo Models</h1>
-</center>
-
+<div id="page">
+  <div id="header">
+    <h4 id="title">Multiagent Netlogo Models</h4>
+    <ul id="nav">
+      <li><a id="aboutLink" href="#">About</a></li>
+      <li><a href="http://jmvidal.cse.sc.edu">Author</a></li>
+      <li><a
+      href="http://ccl.northwestern.edu/netlogo/">NetLogo</a></li>
+      <li><a href="http://www.multiagent.com">MultiAgent Systems</a></li>
+    </ul>
+  </div>
+  <div id="featuredSection">
+    <div id="featuredModel">
+    <a href="port/index.html"><img class="header" src="port/medium.png"/></a>
+    <dl id="featuredVideo">
+      <dt><a href="port/index.html"> Container Port Simulation  </a></dt>
+      <dd><p>A simulation of a container port. We model the movement of the cranes using various utility functions to determine what is the best behavior for the crane operators. The trucks have random arrival times. More details can be found at </p>
+<ol>
+  
+  <li>
+    <p>Nathan Huynh and Jose M. Vidal. <a href="http://jmvidal.cse.sc.edu/papers/huynh10a.pdf">An Agent-Based Approach to Modeling Yard Cranes at Seaport Container Terminals</a>. In <em>Proceedings of the Symposium on Theory of Modeling and Simulation</em>, 2010. </p>
+  </li>
+  <li>
+    <p>Jose M Vidal and Nathan Huynh. <a href="http://jmvidal.cse.sc.edu/papers/vidal10a.pdf">Building Agent-Based Models of Seaport Container Terminals</a>. In <em>Proceedings of 6th Workshop on Agents in Traffic and Transportation</em>, 2010. </p>
+  </li>
+</ol></dd>
+    </dl>
+    </div>
+    <div id="aboutText">
+      <p>These are NetLogo models that demonstrate various well known
+      MultiAgent algorithms and other related techniques. They have
+      been developed by <a
+      href="http://jmvidal.cse.sc.edu">myself</a>, my students, and
+      others over the years.</p>
+      <p>Many of these models implement algorithms described in detail
+      in my free textbook <a
+      href="http://www.multiagent.com">Fundamentals of Multiagent
+      Systems</a>.</p>
+      <p>If you need a consultant or just some help in building a
+      NetLogo model for your research, let me know. Some of these
+      models, and many others not shown here, are the results of
+      collaborations with other researchers in various science and
+      engineering disciplines.</p>
+   </div>
+  </div>
+  
 <div id="grid">
 <div class="model">
   <div class="thumbHolder">
-    <a href="port/index.html"><img src="port/thumb.png"/></a>
+    <a onclick="popup('ABTgc',773,547);return false;" href="#"><img src="ABTgc/thumb.png"/></a>
   </div>
-  <h4><a href="port/index.html"> Container Port Simulation  </a></h4>
-  <h5><p>Jose M Vidal and Nathan Huynh</p> </h5>
+  <h4><a class="modelLink" id="ABTgc"
+  href="ABTgc/index.html" onclick="popup('ABTgc',773,547);return false;"> Asynchronous Backtracking  </a></h4>
+  <div id="ABTgcDescription" class="description"><p>Generates and solves graph coloring problems using ABT.</p></div>
+<h5><p>Gary Fredericks </p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="ABTgc/index.html"><img src="ABTgc/thumb.png"/></a>
+    <a onclick="popup('AWCgc',1018,458);return false;" href="#"><img src="AWCgc/thumb.png"/></a>
   </div>
-  <h4><a href="ABTgc/index.html"> Asynchronous Backtracking  </a></h4>
-  <h5><p>Gary Fredericks </p> </h5>
+  <h4><a class="modelLink" id="AWCgc"
+  href="AWCgc/index.html" onclick="popup('AWCgc',1018,458);return false;"> Graph Coloring using Asynchronous Weak-Commitment  </a></h4>
+  <div id="AWCgcDescription" class="description"><p>This is the implementation of the Asynchronous Weak-Commitment Search for the graph coloring problem. We solve the graph coloring problem using the AWCS algorithm from </p>
+<ol>
+  <li>Makoto Yokoo and Katsutoshi Hirayama. <a href="http://jmvidal.cse.sc.edu/lib/yokoo00a.html">Algorithms for Distributed Constraint Satisfaction: A Review</a>. <em>Autonomous Agents and Multi-Agent Systems,</em> 3(2):185--207, 2000.</li>
+</ol></div>
+<h5><p>Ionel Muscalagiu, Jose M. Vidal </p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="AWCgc/index.html"><img src="AWCgc/thumb.png"/></a>
+    <a onclick="popup('bayesball',993,495);return false;" href="#"><img src="bayesball/thumb.png"/></a>
   </div>
-  <h4><a href="AWCgc/index.html"> Graph Coloring using Asynchronous Weak-Commitment  </a></h4>
-  <h5><p>Ionel Muscalagiu, Jose M. Vidal </p> </h5>
+  <h4><a class="modelLink" id="bayesball"
+  href="bayesball/index.html" onclick="popup('bayesball',993,495);return false;"> Bayes-Ball Algorithm</a></h4>
+  <div id="bayesballDescription" class="description"><p>This model implements the Bayes-Ball algorithm. The purpose to this simulation is to provide a visualization that readers of Shachter's article can explore in order to better understand the process of the algorithm as well as the results it elicits.</p>
+<ol>
+  <li>Ross D. Shachter. <a href="http://jmvidal.cse.sc.edu/lib/shachter98a.html">Bayes-Ball: The Rational Pastime (for Determining Irrelevance and Requisite Information in Belief Networks and Influence Diagrams)</a>. In <em>Proceedings of the Fourteenth Conference in Uncertainty in Artificial Intelligence,</em> p. 480--487, 1998.</li>
+</ol></div>
+<h5><p>Alicia Ruvinsky</p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="bayesball/index.html"><img src="bayesball/thumb.png"/></a>
+    <a onclick="popup('ca',1157,643);return false;" href="#"><img src="ca/thumb.png"/></a>
   </div>
-  <h4><a href="bayesball/index.html"> Bayes-Ball Algorithm</a></h4>
-  <h5><p>Alicia Ruvinsky</p> </h5>
+  <h4><a class="modelLink" id="ca"
+  href="ca/index.html" onclick="popup('ca',1157,643);return false;"> Combinatorial Auction  </a></h4>
+  <div id="caDescription" class="description"><p>Generates and solves a combinatorial auction. The yellow circles represent the items for sale and the green squares represent the bids. Each bid is connected to the items it is over. The square bids with the squares around them are the ones in the revenue-maximizing solution, which we find upon "setup" by running a branch-and-bids algorithm. We implement a branch and bound algorithm on both the branch on items search tree and the branch on bids search tree.</p><p>The simple branch and bound algorithms implemented here are described in</p>
+<ul>
+  <li>Jose M. Vidal. <a href="http://www.multiagent.com/fmas/">Fundamentals of Multiagent Systems: Using NetLogo Models</a>. Unpublished. 2006.</li>
+</ul><p>If you want to learn more about combinatorial auctions I recommend</p>
+<ul>
+  <li>Peter Cramton and Yoav Shoham and Richard Steinberg. <a href="http://jmvidal.cse.sc.edu/lib/cramton06a.html">Combinatorial Auctions</a>. MIT Press. 2006.</li>
+</ul></div>
+<h5><p>Jose M Vidal</p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="ca/index.html"><img src="ca/thumb.png"/></a>
+    <a onclick="popup('circle',596,366);return false;" href="#"><img src="circle/thumb.png"/></a>
   </div>
-  <h4><a href="ca/index.html"> Combinatorial Auction  </a></h4>
-  <h5><p>Jose M Vidal</p> </h5>
+  <h4><a class="modelLink" id="circle"
+  href="circle/index.html" onclick="popup('circle',596,366);return false;"> Circle  </a></h4>
+  <div id="circleDescription" class="description"><p>A very simple application where the turtles move around in a circle.<br/>
+It serves as a fun example of emergent behavior. It also raises<br/>
+interesting questions: What is the most robust way to implement this? What if<br/>
+different people implement different turtles? What if we add some<br/>
+limitations to the environment? etc.</p></div>
+<h5><p>Jose M Vidal</p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="circle/index.html"><img src="circle/thumb.png"/></a>
+    <a onclick="popup('coin',711,1682);return false;" href="#"><img src="coin/thumb.png"/></a>
   </div>
-  <h4><a href="circle/index.html"> Circle  </a></h4>
-  <h5><p>Jose M Vidal</p> </h5>
+  <h4><a class="modelLink" id="coin"
+  href="coin/index.html" onclick="popup('coin',711,1682);return false;"> COIN  </a></h4>
+  <div id="coinDescription" class="description"><p>This model implements the COllective INtelligence framework and attempts to reproduce the results from</p>
+<ul>
+  <li>David Wolpert and Kagan Tumer. <a href="http://jmvidal.cse.sc.edu/lib/wolpert01a.html">Optimal Payoff Functions for Members of Collectives</a>. <em>Advances in Complex Systems,</em> 4(2--3):265--279, 2001.</li>
+</ul><p>It implements the wonderful life utility (WLU) clamped down to 0 (no attendance) and 1 (attend every day) and the aristrocatic utility function for the El Farol Bar problem. Since the paper does not mention the exact parameter values used I have been unable to exactly reproduce their results. Namely, this simulation seems to take longer to converge than theirs.</p><p>Each row in the main output window represents one agent and each of the 7 columns is a day of the week. The patch is set to blue when the agent attends that particular night. Note that the agent often converge if you let the model run over 1000 steps.</p><p>Optimal global utility is achieved, for num-nights=1, if 3 agents attend every night except one night when all the other agents attend.</p></div>
+<h5><p>Jose M Vidal</p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="coin/index.html"><img src="coin/thumb.png"/></a>
+    <a onclick="popup('congregating',890,366);return false;" href="#"><img src="congregating/thumb.png"/></a>
   </div>
-  <h4><a href="coin/index.html"> COIN  </a></h4>
-  <h5><p>Jose M Vidal</p> </h5>
+  <h4><a class="modelLink" id="congregating"
+  href="congregating/index.html" onclick="popup('congregating',890,366);return false;"> Congregating in Market Systems  </a></h4>
+  <div id="congregatingDescription" class="description"><p>We implement the congregating algorithm from</p>
+<ul>
+  <li>Chistopher H. Brooks and Edmund H. Durfee. <a href="http://jmvidal.cse.sc.edu/library/brooks02a.html">Congregating and market formation</a>. In Proceedings of the 1st International Joint Conference on Autonomous Agents and MultiAgent Systems, pages 96-103, 2002.</li>
+</ul></div>
+<h5><p>Jose M Vidal</p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="congregating/index.html"><img src="congregating/thumb.png"/></a>
+    <a onclick="popup('coordination',914,421);return false;" href="#"><img src="coordination/thumb.png"/></a>
   </div>
-  <h4><a href="congregating/index.html"> Congregating in Market Systems  </a></h4>
-  <h5><p>Jose M Vidal</p> </h5>
+  <h4><a class="modelLink" id="coordination"
+  href="coordination/index.html" onclick="popup('coordination',914,421);return false;"> The Coordination Game  </a></h4>
+  <div id="coordinationDescription" class="description"><p>This is the binary coordination game. Each agent can be either red<br/>
+or blue. At each time step some of the agents change their color simultaneously.<br/>
+The goal is to find out how long it takes, under different conditions, for the<br/>
+population to converge to one color. This problem was presented in </p>
+<ol>
+  
+  <li>
+    <p>Yoav Shoham and Moshe Tennenholtz. <a href="http://jmvidal.cse.sc.edu/lib/shoham97a.html">On the emergence of social conventions: modeling, analysis, and simulations</a>. Artificial Intelligence, 94 (139--166) 1997. </p>
+  </li>
+  <li>
+    <p>Jordi Delgado. <a href="http://jmvidal.cse.sc.edu/lib/delgado02a.html">Emergence of social conventions in complex networks</a>. Artificial Intelligence, 141. p. 171--185, 2002.</p>
+  </li>
+</ol></div>
+<h5><p>Jose M Vidal</p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="coordination/index.html"><img src="coordination/thumb.png"/></a>
+    <a onclick="popup('DBgc',789,571);return false;" href="#"><img src="DBgc/thumb.png"/></a>
   </div>
-  <h4><a href="coordination/index.html"> The Coordination Game  </a></h4>
-  <h5><p>Jose M Vidal</p> </h5>
+  <h4><a class="modelLink" id="DBgc"
+  href="DBgc/index.html" onclick="popup('DBgc',789,571);return false;"> Graph Coloring using Distributed Breakout</a></h4>
+  <div id="DBgcDescription" class="description"><p>An implementation of the distributed breakout algorithm from </p>
+<ol>
+  
+  <li>
+    <p>Makoto Yokoo and Katsutoshi Hirayama. <a href="http://jmvidal.cse.sc.edu/lib/yokoo00a.html">Algorithms for Distributed Constraint Satisfaction: A Review&lt;</a>. <em>Autonomous Agents and Multi-Agent Systems</em>, 3(2):185--207, 2000. </p>
+  </li>
+  <li>
+    <p>Makoto Yokoo and Katsutoshi Hirayama. <a href="&lt;http://jmvidal.cse.sc.edu/lib/yokoo96a.html">Distributed Breakout Algorithm for Solving Distributed Constraint Satisfaction Problems</a>. In <em>Proceedings of the Second International Conference on Multiagent Systems,</em> p. 401--408, 1996.</p>
+  </li>
+</ol></div>
+<h5><p>Jose M Vidal</p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="DBgc/index.html"><img src="DBgc/thumb.png"/></a>
+    <a onclick="popup('distributedrec',788,403);return false;" href="#"><img src="distributedrec/thumb.png"/></a>
   </div>
-  <h4><a href="DBgc/index.html"> Graph Coloring using Distributed Breakout</a></h4>
-  <h5><p>Jose M Vidal</p> </h5>
+  <h4><a class="modelLink" id="distributedrec"
+  href="distributedrec/index.html" onclick="popup('distributedrec',788,403);return false;"> Distributed Recommender System  </a></h4>
+  <div id="distributedrecDescription" class="description"><p>A prototype implementation of a distributed recommender system as seen in</p>
+<ul>
+  <li>Jose M. Vidal. <a href="http://jmvidal.cse.sc.edu/papers/vidal03b.pdf&quot;">An Incentive-Compatible Distributed Recommendation Model</a>. In <em>Proceedings of the Sixth International Workshop on Trust, Privacy, Deception, and Fraud in Agent Societies</em>, p. 84--91, 2003.</li>
+</ul></div>
+<h5><p>Jose M Vidal</p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="distributedrec/index.html"><img src="distributedrec/thumb.png"/></a>
+    <a onclick="popup('evolutionarygt',734,539);return false;" href="#"><img src="evolutionarygt/thumb.png"/></a>
   </div>
-  <h4><a href="distributedrec/index.html"> Distributed Recommender System  </a></h4>
-  <h5><p>Jose M Vidal</p> </h5>
+  <h4><a class="modelLink" id="evolutionarygt"
+  href="evolutionarygt/index.html" onclick="popup('evolutionarygt',734,539);return false;"> Evolutionary Game Theory  </a></h4>
+  <div id="evolutionarygtDescription" class="description"><p>A visualization of a population of agents playing repeated games under the standard evolutionary game theory assumptions. We use a simplex to show how these populations evolve over time. Click the forever-go button and then click on the simplex to show how a population at that spot would evolve.</p></div>
+<h5><p>Jose M Vidal</p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="evolutionarygt/index.html"><img src="evolutionarygt/thumb.png"/></a>
+    <a onclick="popup('find-coalition',1159,471);return false;" href="#"><img src="find-coalition/thumb.png"/></a>
   </div>
-  <h4><a href="evolutionarygt/index.html"> Evolutionary Game Theory  </a></h4>
-  <h5><p>Jose M Vidal</p> </h5>
+  <h4><a class="modelLink" id="find-coalition"
+  href="find-coalition/index.html" onclick="popup('find-coalition',1159,471);return false;"> Task Allocation  </a></h4>
+  <div id="find-coalitionDescription" class="description"><p>Solves a task allocation problem with the coalition formation algorithm from </p>
+<ul>
+  <li>Onn Shehory and Sarit Kraus. <a href="http://jmvidal.cse.sc.edu/lib/shehory98a.html">Methods for Task Allocation via Agent Coalition Formation</a>. <em>Artificial Intelligence,</em> May; 101(1-2):165--200, 1998.</li>
+</ul></div>
+<h5><p>William Wiles </p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="find-coalition/index.html"><img src="find-coalition/thumb.png"/></a>
+    <a onclick="popup('mailmen',612,395);return false;" href="#"><img src="mailmen/thumb.png"/></a>
   </div>
-  <h4><a href="find-coalition/index.html"> Task Allocation  </a></h4>
-  <h5><p>William Wiles </p> </h5>
+  <h4><a class="modelLink" id="mailmen"
+  href="mailmen/index.html" onclick="popup('mailmen',612,395);return false;"> Mailmen  </a></h4>
+  <div id="mailmenDescription" class="description"><p>This is the classis MAS mailmen problem where a set of mailmen<br/>
+have to deliver a set of letters. Each letter must be delivered to<br/>
+a different place and mailmen can exchange letters. The goal is to<br/>
+minimize the total distance travelled by the mailmen. It is<br/>
+an instance of a distributed resource allocation problem. The solution<br/>
+provided here is only the most obvious. Better solutions are<br/>
+possible. AFAIK, there is no agreement on what is the best<br/>
+algorithm for solving this problem. This problem was first popularized in </p>
+<ul>
+  <li>Jeffrey S. Rosenschein and Gilad Zlotkin. <a href="http://www.amazon.com/exec/obidos/ASIN/0262181592/multiagentcom/">Rules of Encounter</a>. The MIT Press, Cambridge, MA, 1994.</li>
+</ul></div>
+<h5><p>Jose M Vidal</p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="mailmen/index.html"><img src="mailmen/thumb.png"/></a>
+    <a onclick="popup('marriage-problem',651,461);return false;" href="#"><img src="marriage-problem/thumb.png"/></a>
   </div>
-  <h4><a href="mailmen/index.html"> Mailmen  </a></h4>
-  <h5><p>Jose M Vidal</p> </h5>
+  <h4><a class="modelLink" id="marriage-problem"
+  href="marriage-problem/index.html" onclick="popup('marriage-problem',651,461);return false;"> Marriage Problem  </a></h4>
+  <div id="marriage-problemDescription" class="description"><p>There are 64 single men and 64 single women, all heterosexual its is presumed, who want to get married. Each one ranks all possible mates. The problem is how to find the set of marriages so that no two people (one man one woman) that are not married to each other do, in fact, prefer each other over their assigned partners. </p><p>The solution we implement is the deferred acceptance algorithm from </p>
+<ul>
+  <li>D. Gale and L. S. Shapley. <a href="http://jmvidal.cse.sc.edu/lib/gale62a.html">College Admissions and the Stability of Marriage</a>. <em>The American Mathematical Monthly,</em> 69(1):9--15, Mathematical Association of America. 1962.</li>
+</ul><p>In this model the woman are the pink circles and the men are blue (well, cyan). When a man connects to a woman (edge) it means he proposes to her. The numbers in the nodes represent the preference of that node for its partner. The algorithm works as follows</p>
+<ol>
+  <li>while there are women without a proposal</li><li>every man proposes to the his most preferred woman who has not rejected him</li><li>every woman with multiple proposals rejects all but the one she prefers the most</li>
+</ol><p>When done, all women have one proposal which they accept and live happily ever after. The resulting marriages are stable.</p><p>The scatter plot shows the marriages that we find, where the x coordinate is the man's preference for the woman and the y coordinate is the woman's preference for the man (1 means her most preferred). Notice that even though women turn down men, the men do much better.</p></div>
+<h5><p>Jose M Vidal</p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="marriage-problem/index.html"><img src="marriage-problem/thumb.png"/></a>
+    <a onclick="popup('nqueens-adopt',612,400);return false;" href="#"><img src="nqueens-adopt/thumb.png"/></a>
   </div>
-  <h4><a href="marriage-problem/index.html"> Marriage Problem  </a></h4>
-  <h5><p>Jose M Vidal</p> </h5>
+  <h4><a class="modelLink" id="nqueens-adopt"
+  href="nqueens-adopt/index.html" onclick="popup('nqueens-adopt',612,400);return false;"> NQueens Adopt  </a></h4>
+  <div id="nqueens-adoptDescription" class="description"><p>This program solves the n-queens problem using the Adopt algorith.<br/>
+The Adopt algorithm appears in </p>
+<ul>
+  <li>Pragnesh Jay Modi, Wei-Min Shen, Milind Tambe, and Makoto Yokoo. <a href="http://jmvidal.cse.sc.edu/library/index.html#modi02a">An Asynchronous Complete Method for General Distributed Constraint Optimization</a>. In <em>Proceedings of Autonomous Agents and Multi-Agent Systems Workshop on Distributed Constraint Reasoning</em>, p. 104--118, 2002.</li>
+</ul></div>
+<h5><p>Jose M Vidal</p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="nqueens-adopt/index.html"><img src="nqueens-adopt/thumb.png"/></a>
+    <a onclick="popup('packages',810,389);return false;" href="#"><img src="packages/thumb.png"/></a>
   </div>
-  <h4><a href="nqueens-adopt/index.html"> NQueens Adopt  </a></h4>
-  <h5><p>Jose M Vidal</p> </h5>
+  <h4><a class="modelLink" id="packages"
+  href="packages/index.html" onclick="popup('packages',810,389);return false;"> Reciprocity in Package Delivery  </a></h4>
+  <div id="packagesDescription" class="description"><p>In the package delivery problem a the agents must deliver a set of packages from a central depot. The destinations lie along one of several spokes emaniting from the central depot. The agents can exchange packages only at the depot. The cost to an agent is proportional to the number of packages carried.</p><p>The optimal solution to this problem is to choose one agent to go on each spoke and deliver all the packages scheduled for it. However, this would require completely selfless agents. In this program we study the dynamics that emerege when using different populations of selfish, philantropic, reciprocal, and individual agents behave. </p><p>These results were first presented in</p>
+<ol>
+  
+  <li>
+    <p>Sandip Sen. <a href="http://jmvidal.cse.sc.edu/lib/sen96a.html">Reciprocity: a foundational principle for promoting cooperative behavior among self-interested agents</a>
+In <em>Proceedings of the Second International Conference on Multiagent Systems</em>, p.322--329, AAAI Press, Menlo Park, CA. 1996.</p>
+  </li>
+  <li>
+    <p>Sandip Sen and Partha Sarathi Dutta. <a href="http://jmvidal.cse.sc.edu/lib/sen02a.html">The evolution and stability of cooperative traits</a>. In <em>Proceedings of the First Intenational Joint Conference on Autonomous Agents and Multiagent Systems</em>, pages 1114-1120. ACM Press, NY, NY, 2002.</p>
+  </li>
+  <li>
+    <p>Sandip Sen. <a href="http://jmvidal.cse.sc.edu/lib/sen02b.html">Believing others: Pros and cons</a>. Artificial Intelligence, 142(2):179-203, December 2002. </p>
+  </li>
+</ol></div>
+<h5><p>Jose M Vidal </p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="packages/index.html"><img src="packages/thumb.png"/></a>
+    <a onclick="popup('paretolearn',667,436);return false;" href="#"><img src="paretolearn/thumb.png"/></a>
   </div>
-  <h4><a href="packages/index.html"> Reciprocity in Package Delivery  </a></h4>
-  <h5><p>Jose M Vidal </p> </h5>
+  <h4><a class="modelLink" id="paretolearn"
+  href="paretolearn/index.html" onclick="popup('paretolearn',667,436);return false;"> Pareto Learning</a></h4>
+  <div id="paretolearnDescription" class="description"><p>Description: An implementation of conditional joint action learners (CJAL) in the prisoner's dilemma as described in:</p>
+<ul>
+  <li>Dipyaman Banerjee and Sandip Sen. <a href="http://jmvidal.cse.sc.edu/lib/banerjee07a.html">Reaching pareto-optimality in prisoner's dilemma using conditional joint action learning</a>. <em>Autonomous Agents and Multi-Agent Systems,</em> 15(1):91--108, Kluwer Academic Publishers. 2007.</li>
+</ul><p>These agents reach the Pareto optimal (cooperate,cooperate) solution in repeated play.</p></div>
+<h5><p>Jose M Vidal</p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="paretolearn/index.html"><img src="paretolearn/thumb.png"/></a>
+    <a onclick="popup('path-finding',748,366);return false;" href="#"><img src="path-finding/thumb.png"/></a>
   </div>
-  <h4><a href="paretolearn/index.html"> Pareto Learning</a></h4>
-  <h5><p>Jose M Vidal</p> </h5>
+  <h4><a class="modelLink" id="path-finding"
+  href="path-finding/index.html" onclick="popup('path-finding',748,366);return false;"> Path-Finding Using Pheromones  </a></h4>
+  <div id="path-findingDescription" class="description"><p>In this problem a series of drones tries to find a path from the source<br/>
+to the target while staying away from the obstacles. They use pheromones.<br/>
+I tried to implement something similar to</p>
+<ul>
+  <li>H. Van Dyke Parunak, Sven Brueckner, and John Sauter. <a href="http://jmvidal.cse.sc.edu/library/parunak02a.html">Synthetic pheronome mechanisms for coordination of unmanned vehicles</a> In <em>Proceedings of the First Intenational Joint Conference on Autonomous Agents and Multiagent Systems</em>, pages 448-450, Bologna, Italy, 2002. ACM Press, New York, NY.</li>
+</ul></div>
+<h5><p>Jose M Vidal</p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="path-finding/index.html"><img src="path-finding/thumb.png"/></a>
+    <a onclick="popup('qlearning',605,549);return false;" href="#"><img src="qlearning/thumb.png"/></a>
   </div>
-  <h4><a href="path-finding/index.html"> Path-Finding Using Pheromones  </a></h4>
-  <h5><p>Jose M Vidal</p> </h5>
+  <h4><a class="modelLink" id="qlearning"
+  href="qlearning/index.html" onclick="popup('qlearning',605,549);return false;"> Q-Learning  </a></h4>
+  <div id="qlearningDescription" class="description"><p>An implementation of the Q-learning algorithm for a simple path-finding domain. </p>
+<ul>
+  <li>Christopher J. C. H. Watkins and Peter Dayan. <a href="http://jmvidal.cse.sc.edu/lib/watkins92a.html">Q-Learning</a>. <em>Machine Learning,</em> 8(3-4):279--292, 1992.</li>
+</ul></div>
+<h5><p>Seang Chan Ryu</p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="qlearning/index.html"><img src="qlearning/thumb.png"/></a>
+    <a onclick="popup('replicator',744,399);return false;" href="#"><img src="replicator/thumb.png"/></a>
   </div>
-  <h4><a href="qlearning/index.html"> Q-Learning  </a></h4>
-  <h5><p>Seang Chan Ryu</p> </h5>
+  <h4><a class="modelLink" id="replicator"
+  href="replicator/index.html" onclick="popup('replicator',744,399);return false;"> Replicator Dynamics  </a></h4>
+  <div id="replicatorDescription" class="description"><p>A visualization of the dynamics of a populations of agents using replicator dynamics. The players are of one of three types, each type playing a pure strategy in a 3x3 game. The user can change the payoffs of the game (but this still needs some work, we also need to add arrow that show direction. You interested?). The results are displayes in a simplex plot where each corner corresponds to one of the strategies. Dark areas correspond to fast movement of the population while lite areas represent slow movement.</p></div>
+<h5><p>Scott Langevin </p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="replicator/index.html"><img src="replicator/thumb.png"/></a>
+    <a onclick="popup('shapebugs',759,471);return false;" href="#"><img src="shapebugs/thumb.png"/></a>
   </div>
-  <h4><a href="replicator/index.html"> Replicator Dynamics  </a></h4>
-  <h5><p>Scott Langevin </p> </h5>
+  <h4><a class="modelLink" id="shapebugs"
+  href="shapebugs/index.html" onclick="popup('shapebugs',759,471);return false;"> Shapebugs</a></h4>
+  <div id="shapebugsDescription" class="description"><p>This is an implementation of the Shapebugs algorithm from </p>
+<ul>
+  <li>Jimming Cheng, Winston Cheng, and Radhika Nagpal. <a href="http://jmvidal.cse.sc.edu/lib/cheng05a.html">Robust and Self-Repairing Formation Control for Swarms of Mobile Agents</a>. In <em>Proceedings of the Twentieth National Conference on Artificial Intelligence,</em> p. 59--64, AAAI Press. 2005.</li>
+</ul><p>My program begins (via the setup button) by randomly dispersing the agents throughout the display. All agents start in the lost state and assume that they are outside of the desired shape. An agent inside the shape is assumed to have been found.</p><p>Each agent's movement is as follows: </p>
+<ul>
+  <li>If a neighbor reaches a minimum distance the agent repels that neighbor</li><li>If an agent finds itself inside of the desired shape, it will follow the above rules as long as such movement does not take it outside of the shape.</li><li>If an agent is inside of the shape, and it determines that its next move will take it outside of the shape, it will instead do one of 2 things:</li><li>Stay still: 90% probability</li><li>Move either slightly to the right, left, up, or down: 10% probability</li></li>
+</ul><p>Agent colors:<br/>
+ * A red agent is an agent outside of the desired shape
+ * A blue agent is an agent inside of the desired shape
+ * A green agent is an agent that has been displaced</p><p>Agents can be added or removed dynamically via the slider. The shake button chooses a random square from the screen and moves all agents within that square in random directions away from their starting positions.</p><p>Note: I found that using 1,000+ agents seems to work best for modeling the shape.</p></div>
+<h5><p>Matt Baker </p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="shapebugs/index.html"><img src="shapebugs/thumb.png"/></a>
+    <a onclick="popup('sns',907,642);return false;" href="#"><img src="sns/thumb.png"/></a>
   </div>
-  <h4><a href="shapebugs/index.html"> Shapebugs</a></h4>
-  <h5><p>Matt Baker </p> </h5>
+  <h4><a class="modelLink" id="sns"
+  href="sns/index.html" onclick="popup('sns',907,642);return false;"> Supply Network Survivability  </a></h4>
+  <div id="snsDescription" class="description"><p>This model shows how various supply-chain network topologies fare under attack. The original model was developed to study the military's supply chain vulnerability to terrorist or military attacks, part of the Ultralog project.</p>
+<ul>
+  <li>Hari Prasad Thadakamalla, Usha Nandini Raghavan, Soundar Kumara, and Reka Albert. <a href="http://jmvidal.cse.sc.edu/lib/thadakamalla04a.html">Survivability of Multiagent-Based Supply Networks: A Topological Perspectiv</a>. <em>IEEE Intelligent Systems,</em> 19(5):24--31, 2004.</li>
+</ul></div>
+<h5><p>Jose M Vidal </p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="sns/index.html"><img src="sns/thumb.png"/></a>
+    <a onclick="popup('tileworld',598,390);return false;" href="#"><img src="tileworld/thumb.png"/></a>
   </div>
-  <h4><a href="sns/index.html"> Supply Network Survivability  </a></h4>
-  <h5><p>Jose M Vidal </p> </h5>
+  <h4><a class="modelLink" id="tileworld"
+  href="tileworld/index.html" onclick="popup('tileworld',598,390);return false;"> Tileworld  </a></h4>
+  <div id="tileworldDescription" class="description"><p>This is the classic tileworld problem. There are empty holes and tiles.<br/>
+The agents must push the tiles so that they cover the empty holes. Agents<br/>
+can push each other or more than one tile at once. The solution implemented<br/>
+here is the obvious one. AFAIK, there is no consensus on what is the<br/>
+best algorithm for solving this problem. The Tileworld was first introduced in</p>
+<ul>
+  <li>Martha Pollack and Marc Ringuette. <a href="http://citeseer.nj.nec.com/pollack90introducing.html">Introducing the Tileworld: experimentally evaluating agent architectures</a>
+Thomas Dietterich and William Swartout ed.In <em>Proceedings of the Eighth National Conference on Artificial Intelligence,</em> p. 183--189, AAAI Press. 1990.</li>
+</ul></div>
+<h5><p>Jose M Vidal </p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="tileworld/index.html"><img src="tileworld/thumb.png"/></a>
+    <a onclick="popup('top-trading-cycle',670,480);return false;" href="#"><img src="top-trading-cycle/thumb.png"/></a>
   </div>
-  <h4><a href="tileworld/index.html"> Tileworld  </a></h4>
-  <h5><p>Jose M Vidal </p> </h5>
+  <h4><a class="modelLink" id="top-trading-cycle"
+  href="top-trading-cycle/index.html" onclick="popup('top-trading-cycle',670,480);return false;"> Top Trading Cycle Algorithm  </a></h4>
+  <div id="top-trading-cycleDescription" class="description"><p>In this problem every node represents an agent with a house that he wants to trade. Every agent has an ordered preference of the other agents' houses he prefers (this list includes the agent's own house). The trick then is to get all agents to trade houses so that they all end up in a house that is at least as good, in their eyes, as the one they currently have.</p><p>The Top Trading Cycle Algorithm (TTCA) solves this problem using a very simple greedy method. It was first proposed in:</p>
+<ul>
+  <li>Lloyd Shapley and Herbert Scarf. <a href="http://jmvidal.cse.sc.edu/lib/shapley74a.html">On cores and indivisibility</a>. <em>Journal of Mathematical Economics,</em> 1(1):23--37, 1974.</li>
+</ul></div>
+<h5><p>Jose M Vidal </p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="top-trading-cycle/index.html"><img src="top-trading-cycle/thumb.png"/></a>
+    <a onclick="popup('AntSystem',971,477);return false;" href="#"><img src="AntSystem/thumb.png"/></a>
   </div>
-  <h4><a href="top-trading-cycle/index.html"> Top Trading Cycle Algorithm  </a></h4>
-  <h5><p>Jose M Vidal </p> </h5>
+  <h4><a class="modelLink" id="AntSystem"
+  href="AntSystem/index.html" onclick="popup('AntSystem',971,477);return false;"> Ant System  </a></h4>
+  <div id="AntSystemDescription" class="description"><p>This model is an implementation of the Ant System algorithm, as described in <a href="http://citeseer.ist.psu.edu/dorigo96ant.html">here</a>, that is being used to solve the Traveling Salesman Problem.</p></div>
+<h5><p>Chistopher Roach and Benito Mendoza </p> </h5>
 </div>
 <div class="model">
   <div class="thumbHolder">
-    <a href="AntSystem/index.html"><img src="AntSystem/thumb.png"/></a>
+    <a onclick="popup('nqueensawc',612,400);return false;" href="#"><img src="nqueensawc/thumb.png"/></a>
   </div>
-  <h4><a href="AntSystem/index.html"> Ant System  </a></h4>
-  <h5><p>Chistopher Roach and Benito Mendoza </p> </h5>
-</div>
-<div class="model">
-  <div class="thumbHolder">
-    <a href="nqueensawc/index.html"><img src="nqueensawc/thumb.png"/></a>
-  </div>
-  <h4><a href="nqueensawc/index.html"> NQueens Asynchronous Weak-Commitment</a></h4>
-  <h5><p>Rosa L. Zavala Gutierrez</p> </h5>
+  <h4><a class="modelLink" id="nqueensawc"
+  href="nqueensawc/index.html" onclick="popup('nqueensawc',612,400);return false;"> NQueens Asynchronous Weak-Commitment</a></h4>
+  <div id="nqueensawcDescription" class="description"><p>This is the implementation of the Asynchronous Weak-Commitment Search for the n-queens problem.</p><p>It also shows the number of messages sent by each agent. It behaves different that the Adopt algorithm in which a few agents end up sending the great majority of the messages. Here, the messages sent are better distributed among the agents.</p></div>
+<h5><p>Rosa L. Zavala Gutierrez</p> </h5>
 </div>
 </div>
 
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="code.js"></script>
 </body>
 </html>
