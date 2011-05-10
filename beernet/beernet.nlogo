@@ -231,7 +231,11 @@ end
  
 to setup
   let ofile output-file
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   set output-file ofile
   setup-globals
   no-display
@@ -342,6 +346,7 @@ to check-kill-node
 end
 
 to go
+  tick
   if (count nodes = 0) [
     user-message "Press 'setup' first, then press 'go'"
     stop
@@ -387,9 +392,11 @@ to go
   ]
   if (random-float 1.0 < prob-targeted-attack) [
     let target max-one-of (nodes with [not customer?]) [count in-link-neighbors]
-    set [working?] of target false
-    set [down-until] of target (time + random-exponential mean-downtime)
-    set [color] of target grey 
+    ask target [
+      set working? false
+      set down-until (time + random-exponential mean-downtime)
+      set color grey
+    ] 
     set node-died? true
     set change? true
   ]
@@ -771,8 +778,10 @@ to process-demand
     if (trace?) [show (word "Sending " quantity-to-deliver " to " ([sender] of order-to-fill))]
     ifelse (quantity-to-deliver = ([quantity] of order-to-fill)) [ ;fulfilled whole order, delete it
       ask order-to-fill [die]
-    ][ ;only filled it partially, adjust quantity 
-      set ([quantity] of order-to-fill) ([quantity] of order-to-fill - quantity-to-deliver)
+    ][ ;only filled it partially, adjust quantity
+      ask order-to-fill [
+        set quantity (quantity - quantity-to-deliver)
+      ]
     ]
   ]
 end
@@ -872,7 +881,7 @@ end
 
 to-report get-component
   foreach (components) [
-    if (get-distance-to ? > -1) [
+    if ((get-distance-to ?) > -1) [ ;if an attack happens, node goes down, this line causes error: TODO: fix this.
       report ?
     ]
   ]
@@ -1010,7 +1019,11 @@ end
 ;Just like setup but instead of creating a new topology we use the one from file
 to setup-with-topology [file]
   let ofile output-file
-  ca
+  ;; (for this model to work with NetLogo's new plotting features,
+  ;; __clear-all-and-reset-ticks should be replaced with clear-all at
+  ;; the beginning of your setup procedure and reset-ticks at the end
+  ;; of the procedure.)
+  __clear-all-and-reset-ticks
   set output-file ofile
   setup-globals
   no-display
@@ -1143,14 +1156,7 @@ GRAPHICS-WINDOW
 0
 1
 ticks
-
-CC-WINDOW
-5
-709
-941
-804
-Command Center
-0
+30.0
 
 BUTTON
 10
@@ -1167,6 +1173,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 97
@@ -1183,6 +1190,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 175
@@ -1199,6 +1207,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 PLOT
 367
@@ -1214,11 +1223,12 @@ t-1
 10.0
 true
 true
+"" ""
 PENS
-"F" 0.1 2 -2674135 true
-"D" 1.0 2 -13345367 true
-"R" 1.0 2 -10899396 true
-"C" 1.0 2 -16777216 true
+"F" 0.1 2 -2674135 true "" ""
+"D" 1.0 2 -13345367 true "" ""
+"R" 1.0 2 -10899396 true "" ""
+"C" 1.0 2 -16777216 true "" ""
 
 SLIDER
 11
@@ -1229,7 +1239,7 @@ num-nodes
 num-nodes
 2
 127
-21
+55
 1
 1
 NIL
@@ -1253,7 +1263,7 @@ SWITCH
 112
 show-packages?
 show-packages?
-1
+0
 1
 -1000
 
@@ -1302,8 +1312,9 @@ NIL
 10.0
 true
 false
+"" ""
 PENS
-"default" 1.0 0 -16777216 true
+"default" 1.0 0 -16777216 true "" ""
 
 PLOT
 11
@@ -1319,8 +1330,9 @@ Edge Distribution
 5.0
 true
 false
+"" ""
 PENS
-"default" 1.0 1 -16777216 false
+"default" 1.0 1 -16777216 false "" ""
 
 MONITOR
 875
@@ -1368,11 +1380,12 @@ plot-variable
 10.0
 true
 true
+"" ""
 PENS
-"F" 1.0 0 -2674135 true
-"D" 1.0 0 -13345367 true
-"R" 1.0 0 -10899396 true
-"C" 1.0 0 -16777216 true
+"F" 1.0 0 -2674135 true "" ""
+"D" 1.0 0 -13345367 true "" ""
+"R" 1.0 0 -10899396 true "" ""
+"C" 1.0 0 -16777216 true "" ""
 
 CHOOSER
 176
@@ -1514,9 +1527,10 @@ NIL
 10.0
 true
 true
+"" ""
 PENS
-"CPL" 1.0 0 -14835848 true
-"CC" 1.0 0 -5825686 true
+"CPL" 1.0 0 -14835848 true "" ""
+"CC" 1.0 0 -5825686 true "" ""
 
 BUTTON
 212
@@ -1533,6 +1547,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 SLIDER
 730
@@ -1589,6 +1604,7 @@ NIL
 NIL
 NIL
 NIL
+1
 
 BUTTON
 214
@@ -1605,16 +1621,26 @@ NIL
 NIL
 NIL
 NIL
+1
 
 @#$#@#$#@
-BEERNET
--------
+# Beernet
 
-by 
+## CREDITS
+
 Jose M. Vidal and Anand Nair
 
-An implementation of an automated beer game within a large network.
-We test survivability and dynamic behavior of the supply network under various types of attacks or failures.
+## WHAT IS IT?
+
+This is an implementation of an automated [beer distrubution game](http://en.wikipedia.org/wiki/Beer_distribution_game) in a large tree-like network. We can observe the Bullwhip effect in action.  We test survivability and dynamic behavior of the supply network under various types of attacks or failures. More information on this model can be found in
+
+ * Anand Nair and José M. Vidal. [Supply Network Topology and Robustness against Disruptions: An investigation using Multi-agent Model](http://jmvidal.cse.sc.edu/lib/nair11.html). _International Journal of Production Research_, 49(5):1391--1404, 2011. 
+
+## CHANGES
+
+20110501
+
+Upgraded to 5.0
 @#$#@#$#@
 default
 true
@@ -1910,7 +1936,7 @@ Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 
 @#$#@#$#@
-NetLogo 4.0.3
+NetLogo 5.0beta2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -2458,4 +2484,6 @@ true
 Line -7500403 true 150 150 90 180
 Line -7500403 true 150 150 210 180
 
+@#$#@#$#@
+0
 @#$#@#$#@
