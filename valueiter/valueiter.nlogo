@@ -14,7 +14,6 @@ nodes-own [reward utility new-utility]
 
 to setup
   ca
-  reset-ticks
   ask patches [
     ifelse ((pxcor + pycor) mod 2) = 0 [
       set pcolor white
@@ -28,6 +27,7 @@ to setup
       set size .1
       set color black
       set utility 0
+      set new-utility utility
       set reward 0
       ]
   ]
@@ -36,6 +36,7 @@ to setup
     set color red
     set reward 10
     set utility reward
+    set new-utility utility
     set size .4
   ]
   ask nodes [
@@ -44,18 +45,25 @@ to setup
     ]
   ]
   ask links [
-   set transitions (list (list 1 end2))
-   set label-color black
+    let destination end2
+    let other-possibilities sort ([out-link-neighbors] of end1) with [(distance destination < 2) and self != destination]
+    let rest-prob (1 - prob-action-works) / (1 + length other-possibilities)
+    set transitions (list (list prob-action-works end2) (list rest-prob end1))
+    foreach other-possibilities[
+      set transitions fput (list rest-prob ?) transitions 
+    ]
+    set label-color black
   ]
+  reset-ticks
 end
 
 
 to go
+  ask nodes [set utility new-utility]
   ask nodes [
     update-utilities
   ]
   ask links [set u new-u]
-  ask nodes [set utility new-utility]
   tick
 end
 
@@ -69,7 +77,7 @@ to update-utility
    let destination item 1 ?
    set new-u new-u + (probability * [utility] of destination)
   ]
-  set thickness new-u / 100
+  set thickness new-u / thickness-denominator
 end
 
 ;;nodes' methods
@@ -144,10 +152,10 @@ NIL
 1
 
 SLIDER
-3
-133
-175
-166
+2
+84
+174
+117
 gamma
 gamma
 0
@@ -159,10 +167,10 @@ NIL
 HORIZONTAL
 
 SLIDER
-4
+3
+160
+175
 193
-176
-226
 dead-nodes
 dead-nodes
 0
@@ -172,6 +180,54 @@ dead-nodes
 1
 NIL
 HORIZONTAL
+
+SLIDER
+3
+122
+175
+155
+prob-action-works
+prob-action-works
+0
+1
+0.5
+.01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+3
+210
+201
+243
+thickness-denominator
+thickness-denominator
+0
+200
+96
+1
+1
+NIL
+HORIZONTAL
+
+PLOT
+4
+303
+204
+453
+Max Delta
+tick
+NIL
+0.0
+4.0
+0.0
+4.0
+true
+false
+"" ""
+PENS
+"default" 1.0 1 -16777216 false "" "if (ticks > 0) [plot max [abs new-utility - utility] of nodes]"
 
 @#$#@#$#@
 # Value Iteration
@@ -184,6 +240,8 @@ A demonstration of the value iteration algorithm as applied to a 2D world where 
 
 We build a graph where the _node_s represent the state of the underlying MDP and the directed _links_ represent actions that can be taken on each state. Each link has a _transitions_ variable which holds the set of _nodes_ that can be reached when taken that action, along with the probabilities.
 
+_prob-action-works_ is the probability that the action (North, South, East, West) will actually take the robot to that square. With 1 - _prob-action-works_ the robot will end up either at its current spot or at one of the other reachable nodes that is a distance of < 2 from the intended destination, with equal probability.
+
 ## HOW TO USE IT
 
 Setup and Go.
@@ -195,6 +253,8 @@ Jose M Vidal
 ## CHANGES
 
 20110414
+
+Initial revision
 @#$#@#$#@
 default
 true
