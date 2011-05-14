@@ -31,9 +31,12 @@ to setup
       set reward 0
       ]
   ]
+  ask n-of dead-nodes nodes [die]
   ask one-of nodes [ 
     set color red
     set reward 10
+    set utility reward
+    set size .4
   ]
   ask nodes [
     foreach sort turtle-set nodes-on neighbors4 [
@@ -48,12 +51,12 @@ end
 
 
 to go
-  tick
   ask nodes [
     update-utilities
   ]
   ask links [set u new-u]
   ask nodes [set utility new-utility]
+  tick
 end
 
 ;;link' methods
@@ -72,19 +75,21 @@ end
 ;;nodes' methods
 
 to update-utilities
-  ask my-out-links [update-utility]
-  let best-action max-one-of my-out-links [new-u]
-  set new-utility reward + (gamma * [new-u] of best-action)
+  if (any? my-out-links) [
+    ask my-out-links [update-utility]
+    let best-action max-one-of my-out-links [new-u]
+    set new-utility reward + (gamma * [new-u] of best-action)
+  ]
 end
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
 10
-820
-641
+720
+541
 -1
 -1
-100.0
+50.0
 1
 10
 1
@@ -95,9 +100,9 @@ GRAPHICS-WINDOW
 0
 1
 0
-5
+9
 0
-5
+9
 1
 1
 1
@@ -147,8 +152,23 @@ gamma
 gamma
 0
 1
-0.83
+0.8
 .01
+1
+NIL
+HORIZONTAL
+
+SLIDER
+4
+193
+176
+226
+dead-nodes
+dead-nodes
+0
+20
+20
+1
 1
 NIL
 HORIZONTAL
