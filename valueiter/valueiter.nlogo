@@ -240,7 +240,11 @@ A demonstration of the value iteration algorithm as applied to a 2D world where 
 
 We build a graph where the _node_s represent the state of the underlying MDP and the directed _links_ represent actions that can be taken on each state. Each link has a _transitions_ variable which holds the set of _nodes_ that can be reached when taken that action, along with the probabilities.
 
+The thickness of each edge/action is proportional to its current utility.
+
 _prob-action-works_ is the probability that the action (North, South, East, West) will actually take the robot to that square. With 1 - _prob-action-works_ the robot will end up either at its current spot or at one of the other reachable nodes that is a distance of < 2 from the intended destination, with equal probability.
+
+The plot shows the maximum change in utility over all nodes. As expected, this value decreases monotonically.
 
 ## HOW TO USE IT
 
@@ -252,7 +256,7 @@ Jose M Vidal
 
 ## CHANGES
 
-20110414
+20110514
 
 Initial revision
 @#$#@#$#@

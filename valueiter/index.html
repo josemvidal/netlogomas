@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Value Iteration</title>
+<link rel="stylesheet" type="text/css" href="../style.css">
+<meta name="AUTHOR" content="Jose M Vidal"></meta>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+ _gaq.push(['_setAccount', 'UA-279322-1']);
+ _gaq.push(['_trackPageview']);
+(function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+ })();
+</script>
+</head>
+<body>
+<center>
+<applet code="org.nlogo.lite.Applet"
+        width="746" height="551"
+        archive="../NetLogoLite.jar,table/table.jar">
+  <param name="DefaultModel"
+         value="valueiter.nlogo">
+</applet>
+</center>
+<a id="download" href="valueiter.nlogo">Download</a>
+<h1>Value Iteration</h1><h2>WHAT IS IT?</h2><p>A demonstration of the value iteration algorithm as applied to a 2D world where a robot can move North, South, East, or West.</p><h2>HOW IT WORKS</h2><p>We build a graph where the _node_s represent the state of the underlying MDP and the directed <em>links</em> represent actions that can be taken on each state. Each link has a <em>transitions</em> variable which holds the set of <em>nodes</em> that can be reached when taken that action, along with the probabilities.</p><p>The thickness of each edge/action is proportional to its current utility.</p><p><em>prob-action-works</em> is the probability that the action (North, South, East, West) will actually take the robot to that square. With 1 - <em>prob-action-works</em> the robot will end up either at its current spot or at one of the other reachable nodes that is a distance of &lt; 2 from the intended destination, with equal probability.</p><p>The plot shows the maximum change in utility over all nodes. As expected, this value decreases monotonically.</p><h2>HOW TO USE IT</h2><p>Setup and Go.</p><h2>CREDITS AND REFERENCES</h2><p>Jose M Vidal</p><h2>CHANGES</h2><p>20110514</p><p>Initial revision</p>
+</body>
+</html>
